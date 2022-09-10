@@ -1,0 +1,179 @@
+[
+ {
+  "id": 1,
+  "nombre": "Margarita",
+  "apellido": "Klimowicz",
+  "email": "mklimowicz0@typepad.com",
+  "clave": "O3fcCxQWyZ54",
+  "telefono": "7216771598",
+  "ciudad": "Ribeiro",
+  "categoria": false,
+  "img": "https://robohash.org/fugadoloremqueaut.jpg?size=50x50&set=set1"
+ },
+ {
+  "id": 2,
+  "nombre": "Sanford",
+  "apellido": "Govett",
+  "email": "sgovett1@cloudflare.com",
+  "clave": "YxQiXX69mzyW",
+  "telefono": "1097790791",
+  "ciudad": "Corzuela",
+  "categoria": false,
+  "img": "https://robohash.org/nemoquoest.png?size=50x50&set=set1"
+ },
+ {
+  "id": 3,
+  "nombre": "Philippe",
+  "apellido": "Flew",
+  "email": "pflew2@washington.edu",
+  "clave": "bCo5yGZKy",
+  "telefono": "7351002869",
+  "ciudad": "Yakovlevo",
+  "categoria": false,
+  "img": "https://robohash.org/voluptastemporibusqui.jpg?size=50x50&set=set1"
+ },
+ {
+  "id": 4,
+  "nombre": "Brandy",
+  "apellido": "Fenners",
+  "email": "bfenners3@blogger.com",
+  "clave": "F8CSMKknO14",
+  "telefono": "7915972186",
+  "ciudad": "Baunu-Timbangan",
+  "categoria": false,
+  "img": "https://robohash.org/quieosquisquam.bmp?size=50x50&set=set1"
+ },
+ {
+  "id": 5,
+  "nombre": "Tammie",
+  "apellido": "Dosdill",
+  "email": "tdosdill4@flavors.me",
+  "clave": "Jy1zx7kPkkq",
+  "telefono": "1362781197",
+  "ciudad": "Khuan Don",
+  "categoria": false,
+  "img": "https://robohash.org/natusquisquamquo.jpg?size=50x50&set=set1"
+ },
+ {
+  "id": 6,
+  "nombre": "Udall",
+  "apellido": "McCraw",
+  "email": "umccraw5@accuweather.com",
+  "clave": "5ytbNagYmcs",
+  "telefono": "5366791062",
+  "ciudad": "Bolong",
+  "categoria": true,
+  "img": "https://robohash.org/magnamiustovero.jpg?size=50x50&set=set1"
+ },
+ {
+  "id": 7,
+  "nombre": "Jan",
+  "apellido": "Cases",
+  "email": "jcases6@google.co.uk",
+  "clave": "9thMTzKY1",
+  "telefono": "7681061335",
+  "ciudad": "Dū Qal‘ah",
+  "categoria": false,
+  "img": "https://robohash.org/recusandaesitmagni.png?size=50x50&set=set1"
+ },
+ {
+  "id": 8,
+  "nombre": "Cicely",
+  "apellido": "Hyrons",
+  "email": "chyrons7@umich.edu",
+  "clave": "LwohxMUaV53I",
+  "telefono": "7195531594",
+  "ciudad": "Suncun",
+  "categoria": true,
+  "img": "https://robohash.org/suntexpeditaquibusdam.png?size=50x50&set=set1"
+ },
+ {
+  "id": 9,
+  "nombre": "Candie",
+  "apellido": "Hedditeh",
+  "email": "chedditeh8@1688.com",
+  "clave": "yZndZABU8ex",
+  "telefono": "8626617875",
+  "ciudad": "Zhonghekou",
+  "categoria": true,
+  "img": "https://robohash.org/consequaturdolorenim.bmp?size=50x50&set=set1"
+ },
+ {
+  "id": 10,
+  "nombre": "Eduino",
+  "apellido": "MacGrath",
+  "email": "emacgrath9@google.es",
+  "clave": "bZJRxXG",
+  "telefono": "3286571415",
+  "ciudad": "Proástion",
+  "categoria": false,
+  "img": "https://robohash.org/consequunturpariatureaque.bmp?size=50x50&set=set1"
+ },
+ {
+  "id": 11,
+  "nombre": "Gustavo Adolfo",
+  "apellido": "Wehdeking Morantes",
+  "correo": "gwehdeking@summa-sci.com",
+  "password": "12345",
+  "telefono": "3127570743",
+  "ciudad": "Envigado",
+  "categoria": "true",
+  "img": "img-1660581820709.jpg"
+ },
+ {
+  "id": 12,
+  "nombre": "Fabio",
+  "apellido": "Quimbay",
+  "correo": "fquimbay@summa-sci.com",
+  "password": "12345",
+  "telefono": "3127570700",
+  "ciudad": "Envigado",
+  "categoria": "true",
+  "img": "default-foto.png"
+ },
+ {
+  "id": 13,
+  "nombre": "Bibiana",
+  "apellido": "Osorio",
+  "correo": "bosorio@summa-sci.com",
+  "password": "12345",
+  "telefono": "3127570799",
+  "ciudad": "Envigado",
+  "categoria": "false",
+  "img": "default-foto.png"
+ },
+ {
+  "id": 14,
+  "nombre": "Ofelia Maria",
+  "apellido": "Monsalve",
+  "correo": "bosorio@summa-sci.com",
+  "password": "1234",
+  "telefono": "3127570799",
+  "ciudad": "Envigado",
+  "categoria": "false",
+  "aceptar": "on",
+  "img": "default-foto.png"
+ },
+ {
+  "id": 15,
+  "nombre": "Anne",
+  "apellido": "Hathaway",
+  "correo": "aHathaway@outlook.com",
+  "password": "1234",
+  "telefono": "3127570700",
+  "ciudad": "Nueva York",
+  "categoria": "false",
+  "aceptar": "on",
+  "img": "img-1661899167226.png"
+ },
+ {
+  "id": 16,
+  "name": "Alberto Perez",
+  "correo": "aperez@tronex.com",
+  "phone": "3127570700",
+  "password": "$2a$10$m0PgyuzwRFK2kHM8/bhUs.5TjyxDzrz4tYp6OhlEntuacx2joVtXi",
+  "re_password": "Digital2022",
+  "check": "on",
+  "img": "default-foto.png"
+ }
+]
