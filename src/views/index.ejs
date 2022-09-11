@@ -1,24 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <%- include('./partials/head'); %>
+    <title>Licores la Botellita</title>
+      <%- include('partials/head'); %>
 </head>
-<body class="container">
+<body>
+    <header>
+        <%- include('partials/header'); %>
+    </header> 
 
-<header>
-    <%- include('./partials/header'); %>
-</header>
-
-<main>
-    <div class="jumbotron">
-        <h1>This is great</h1>
-        <p>Welcome to templating using EJS</p>
-    </div>
-</main>
-
-<footer>
-    <%- include('./partials/footer'); %>
-</footer>
-
+    <section>
+      <div class="banner_container">
+        <ul class="slider">
+          <li id="slide1">
+            <img src="../../public/img/banner/banner-nuevos-productos.png" alt="banner1" />
+          </li>
+          <li id="slide2">
+            <img src="../../public/img/banner/banner-licor43.jpg" alt="banner2" />
+          </li>
+          <li id="slide3">
+            <img src="../img/banner/banner-coctel.jpg" alt="banner3" />
+          </li>
+        </ul>
+  
+        <ul class="menu_banner">
+          <li>
+            <a href="#slide1">1</a>
+          </li>
+          <li>
+            <a href="#slide2">2</a>
+          </li>
+          <li>
+            <a href="#slide3">3</a>
+          </li>
+        </ul>
+  
+      </div>
+  
+  
+    </section>
+    <!-- End init Section  -->
+  
+    <!-- Projects Section -->
+    <section id="projects">
+      <div class="projects container">
+        <div class="projects-header">
+          <h4 class="section-title">Escuela de Cocteleria</h4>
+          <h2>
+            En nuestro blog encontrarás artículos sobre vinos y licores. Aprende
+            cómo acompañar tus recetas con nuestros productos.
+          </h2>
+          <br />
+        </div>
+        <div class="all-projects">
+          <div class="project-item">
+            <div class="project-img">
+              <img class="img-coctel" src="./img/coctel/coctel_1.jpg" alt="img" />
+            </div>
+          </div>
+          <br />
+          <div class="project-item">
+            <div class="project-img">
+              <img src="./img/coctel/coctel_2.jpg" alt="img" />
+            </div>
+          </div>
+          <br />
+          <div class="project-item">
+            <div class="project-img">
+              <img src="./img/coctel/coctel_3.jpg" alt="img" />
+            </div>
+          </div>
+          <br />
+          <div class="project-item">
+            <div class="project-img">
+              <img src="./img/coctel/coctel_4.jpg" alt="img" />
+            </div>
+          </div>
+          <br />
+        </div>
+      </div>
+    </section>
+    <!-- End Projects Section -->
+  
+    <footer>
+        <%- include('partials/footer'); %>
+    </footer>
+    
 </body>
 </html>

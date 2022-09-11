@@ -1,19 +1,1051 @@
-*{
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+@import 'https://fonts.googleapis.com/css?family=Montserrat:300, 400, 700&display=swap';
+
+html,
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+	height: 100%;
+	width: 100%;
+	margin: 0;
+}
+
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+html {
+	font-size: 10px;
+	font-family: 'Montserrat', sans-serif;
+	scroll-behavior: smooth;
 }
 
 a {
-  color: #00B7FF;
+	text-decoration: none;
 }
-img{
-  width: 100%;
+
+img {
+	border-radius: 50%;
 }
-figure{
-  width: 20%;
+
+/* Estilos para los botones editar y eliminar */
+.action-button {
+	border: none;
+	border-radius: 8px;
+	font-size: 1.2em;
+	color: #ffffff;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding: 15px 30px;
+	margin-top: 15px;
+  }
+  
+  .action-button.edit {
+	background-color: chocolate;
+  }
+  .action-button.delete {
+	background-color: rgb(248, 69, 37);
+  }
+  .action-button.login {
+	background-color: rgb(248, 69, 37);
+  }
+
+  .buy-now-button {
+	background-color: var(--light-blue);
+	font-size: 1.6em;
+	color: #ffffff;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 15px;
+	border-radius: 8px;
+	border: none;
+	margin-bottom: 15px;
+	background-color: #7F1832;
+  }
+
+/*Contenerdor Banner*/
+.container {
+	min-height: 50vh;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.banner_container {
+	margin: auto;
+	background-color: white;
+	width: 800px;
+	padding: 30px;
+}
+
+ul.slider {
+	position: relative;
+	width: 800px;
+	height: 300px;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+ul.slider li {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	position: absolute;
+	left: 0;
+	top: 0;
+	opacity: 0;
+	width: inherit;
+	height: inherit;
+	/* background-color: white; */
+	background: #fff;
+	transition: opacity .5s;
+}
+
+ul.slider li img {
+	width: 100%;
+	height: 300px;
+	object-fit: cover;
+}
+
+ul.slider li:first-child {
+	opacity: 1;
+	/*Mostramos el primer <li>*/
+}
+
+ul.slider li:target {
+	opacity: 1;
+	/*Mostramos el <li> del enlace que pulsemos*/
+}
+
+.menu_banner {
+	text-align: center;
+	margin: 20px;
+}
+
+.menu_banner li {
+	display: inline-block;
+	text-align: center;
+}
+
+.menu_banner li a {
+	display: inline-block;
+	color: white;
+	text-decoration: none;
+	background-color: #7F1832;
+	;
+	padding: 10px;
+	width: 20px;
+	height: 20px;
+	font-size: 12px;
+	border-radius: 100%;
+}
+
+img {
+	height: 100%;
+	width: 100%;
+}
+
+
+/*Interlineado de los productos*/
+p {
+	color: rgb(222, 15, 15);
+	font-size: 1.4rem;
+	margin-top: 5px;
+	line-height: 2rem;
+	font-weight: 300;
+	letter-spacing: 0.05rem;
+}
+
+/*Estilo del Titulo centro de la pagina (Escuela de Cocteleria) */
+.section-title {
+	font-size: 4rem;
+	font-weight: 300;
+	color: rgb(0, 5, 159);
+	margin-bottom: 10px;
+	text-transform: uppercase;
+	letter-spacing: 0.50rem;
+	text-align: center;
+}
+
+article div.main-article {
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+	border-top: 1px solid #d61f1f;
+	position: relative;
+	padding: 15px;
+}
+
+/*Estilo de la caja */
+.caja {
+	display: inline-block;
+	color: white;
+	/*	border: 2px solid crimson;*/
+	margin-top: 3px;
+}
+
+/*animacion cuando se pasa el cursor por las cajas*/
+
+.caja:hover {
+	color: white(228, 7, 7);
+	background-color: rgb(99, 103, 103);
+}
+
+/*Color del textos del encabezado y pie de pagina*/
+.brand h1 {
+	font-size: 3rem;
+	text-transform: uppercase;
+	color: rgb(137, 136, 187);
+}
+
+/*Color del textos de las inciales de encabezado y pie de pagina*/
+.brand h1 span {
+	color: rgb(255, 255, 255);
+}
+
+/* Header section  Fija la barra de navegación superior*/
+
+#header {
+	position: relative;
+	z-index: 1000;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: auto;
+}
+
+/*Color de la barra superor*/
+
+#header .header {
+	min-height: 8vh;
+	background-color: #7F1832;
+}
+
+/*Estilo de la barra superor*/
+#header .nav-bar {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+	height: 100%;
+	max-width: 1300px;
+	padding: 0 10px;
+}
+
+/*Menú Hambueguesa */
+
+#header .nav-list ul {
+	list-style: none;
+	position: absolute;
+	background-color: rgb(31, 30, 30);
+	width: 100vw;
+	height: 100vh;
+	left: 100%;
+	top: 0;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	z-index: 1;
+	overflow-x: hidden;
+	transition: 0.5s ease left;
+}
+
+#header .nav-list ul.active {
+	left: 0%;
+}
+
+/*Color de texto del menú superior*/
+#header .nav-list ul a {
+	font-size: 2.5rem;
+	font-weight: 500;
+	color: #FFFFFF;
+	padding: 10px;
+	display: block;
+}
+
+/*Menu hamburguesa en <170 px*/
+#header .nav-list ul a::after {
+	content: attr(data-after);
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%) scale(0);
+	color: rgba(240, 248, 255, 0.021);
+	font-size: 13rem;
+	letter-spacing: 50px;
+	z-index: -1;
+	transition: 0.3s ease letter-spacing;
+}
+
+#header .nav-list ul li:hover a::after {
+	transform: translate(-50%, -50%) scale(1);
+	letter-spacing: initial;
+}
+
+/*Cambia de color cuando se da clic en el menú en modo celular*/
+#header .nav-list ul li:hover a {
+	color: rgb(21, 1, 202);
+}
+
+#header .hamburger {
+	height: 60px;
+	width: 60px;
+	display: inline-block;
+	border: 3px solid white;
+	border-radius: 50%;
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: 100;
+	cursor: pointer;
+	transform: scale(0.8);
+	margin-right: 20px;
+}
+
+#header .hamburger:after {
+	position: absolute;
+	content: '';
+	height: 100%;
+	width: 100%;
+	border-radius: 50%;
+	border: 3px solid white;
+	animation: hamburger_puls 1s ease infinite;
+}
+
+#header .hamburger .bar {
+	height: 2px;
+	width: 30px;
+	position: relative;
+	background-color: white;
+	z-index: -1;
+}
+
+#header .hamburger .bar::after,
+#header .hamburger .bar::before {
+	content: '';
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	left: 0;
+	background-color: white;
+	transition: 0.3s ease;
+	transition-property: top, bottom;
+}
+
+#header .hamburger .bar::after {
+	top: 8px;
+}
+
+#header .hamburger .bar::before {
+	bottom: 8px;
+}
+
+#header .hamburger.active .bar::before {
+	bottom: 0;
+}
+
+#header .hamburger.active .bar::after {
+	top: 0;
+}
+
+div.last-visit,
+div.offers {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.login {
+	text-align: center;
+	background-color: rgba(186, 211, 178, 0.6);
+	border: 3px solid rgb(234, 151, 151);
+	width: 30%;
+	height: 80%;
+	padding: 15px;
+	color: #000;
+	position: relative;
+	top: 70px;
+	margin: 0 auto;
+}
+
+#captcha {
+	position: relative;
+	left: 15%;
+	margin: 0 auto;
+}
+
+#aut_google {
+	position: relative;
+	left: 35%;
+	margin: 0 auto;
+}
+
+/* End Header section */
+
+/*Estilo caja de busqueda header*/
+header .form .input {
+	background-color: #FFF;
+	border: 1px solid #000;
+	outline: none;
+	color: #666;
+	padding: 2px;
+}
+
+div.carrito-compras {
+	display: flex;
+	text-align: right;
+}
+
+/*Color de los iconos de busqueda, login, registro*/
+.blackiconcolor {
+	color: rgb(255, 255, 255);
+}
+
+/* End init Section */
+
+/* Diseño de los accesos pagina productos */
+
+#services .service-bottom {
+	display: flex;
+	align-items: stretch;
+	justify-content: space-around;
+	flex-wrap: wrap;
+	margin-top: 1px;
+	margin-bottom: 1px;
+}
+
+/* Estilo de las cajas pagina productos*/
+
+#services .service-item {
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	flex-direction: column;
+	padding: 30px;
+	border-radius: 180px;
+	position: relative;
+	z-index: 1;
+	overflow: hidden;
+}
+
+/* Estilo de la pagina de productos */
+#services .service-item::after {
+	content: '';
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	background-image: linear-gradient(60deg, #000000cc 0%, #cfd3d6 100%);
+	opacity: 0.9;
+	z-index: -1;
+}
+
+/* Estilo de las imagenes pequeñas de productos */
+#services .service-bottom .icon {
+	height: 80px;
+	width: 80px;
+	margin-bottom: 5%;
+
+}
+
+/* Texto de la seccion productos */
+#services .service-item h2 {
+	font-size: 22px;
+	color: white(219, 68, 68);
+	margin-bottom: 20px;
+	text-transform: uppercase;
+}
+
+/* End Services Section */
+
+/* Escuela de cocteleria*/
+#projects .projects {
+	flex-direction: column;
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 20px 0;
+}
+
+/*Margen entre el titulo de la escuela de cocteleria y las imagenes*/
+#projects .projects-header h4 {
+	margin-bottom: 5px;
+}
+
+/*Imagen del centro*/
+#projects .project-img {
+	overflow: hidden;
+	position: relative;
+	background-color: #ff0505df;
+}
+
+/*Imagen vino*/
+
+div.last-visit,
+div.offers {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.price {
+	font-size: 18px;
+	width: 30%;
+}
+
+.discount {
+	width: 70%;
+}
+
+.discount,
+.description {
+	font-size: 12px;
+	font-weight: normal;
+}
+
+h3,
+.description {
+	color: #666;
+}
+
+.description {
+	display: none;
+	margin-top: 20px;
+}
+
+section.banner img {
+	width: 100%;
+}
+
+/*van todos las clase de productos*/
+.main {
+	margin-top: 50px;
+}
+
+main {
+	width: 90%;
+	margin: 0 auto;
+}
+
+main section article {
+	background-color: #fff;
+	margin: 10px 0px;
+}
+
+main section article img {
+	width: 100%;
+}
+
+main section article i,
+.discount {
+	color: #7F1832;
+}
+
+main section article i {
+	display: block;
+	font-size: 16px;
+	padding: 5px;
+	width: 30px;
+	height: 30px;
+	border: 1px solid #7F1832;
+	background-color: #FFF;
+	border-radius: 50%;
+	position: absolute;
+	right: 20px;
+	top: -15px;
+}
+
+main section h3 {
+	margin: 20px 0px;
+}
+
+article div.main-article {
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+	border-top: 1px solid #ebebeb;
+	position: relative;
+	padding: 15px;
+}
+
+/*====== Formularios ======*/
+.form-label {
+	display: inline-block;
+	font-size: 1.6em;
+	margin: 10px 0;
+  }
+  
+  .form-input {
+	display: block;
+	width: 100%;
+	height: 45px;
+	margin-bottom: 15px;
+	font-size: 1.5em;
+	border-radius: 8px;
+	border: none;
+	border: solid 1px var(--gray);
+	padding: 0 15px;
+  }
+  
+  textarea.form-input {
+	min-height: 140px;
+	resize: vertical;
+	padding: 15px;
+  }
+  
+
+/*Colores de degradación sobre la imagen de cocteles*/
+#projects .project-img:after {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 0;
+	height: 100%;
+	width: 100%;
+	background-image: linear-gradient(70deg, #1777df 90%, #6ef4c1 100%);
+	opacity: 0.4;
+}
+
+
+#projects .project-img img {
+	transition: 0.8s ease transform;
+}
+
+#projects .project-item:hover .project-img img {
+	transform: scale(1.1);
+}
+
+/* End Projects section */
+
+/* Media Query For Tablet */
+@media only screen and (min-width: 768px) {
+	.caja {
+		font-size: 2.5rem;
+		padding: 20px 60px;
+	}
+
+	h1.section-title {
+		font-size: 6rem;
+	}
+
+	/* init */
+	#init h1 {
+		font-size: 7rem;
+	}
+
+	/* End init */
+
+	/* Services Section */
+	#services .service-bottom .service-item {
+		flex-basis: 45%;
+		margin: 2.5%;
+	}
+
+	/* End Services Section */
+
+	/* Project */
+	#projects .project-item {
+		flex-direction: row;
+	}
+
+	#projects .project-item:nth-child(even) {
+		flex-direction: row-reverse;
+	}
+
+	#projects .project-item {
+		height: 400px;
+		margin: 0;
+		width: 100%;
+		border-radius: 0;
+	}
+
+	#projects .all-projects .project-info {
+		height: 100%;
+	}
+
+	#projects .all-projects .project-img {
+		height: 100%;
+	}
+
+	/* End Project */
+
+	/* End Media Query For Tablet */
+
+	/* Media Query For Desktop */
+	@media only screen and (min-width: 1200px) {
+
+		/*@media only screen and (max-width:1600px) and (min-width: 1200px)*/
+		/* header */
+		#header .hamburger {
+			display: none;
+		}
+
+		#header .nav-list ul {
+			position: initial;
+			display: block;
+			height: auto;
+			width: fit-content;
+			background-color: transparent;
+		}
+
+		#header .nav-list ul li {
+			display: inline-block;
+		}
+
+		#header .nav-list ul li a {
+			font-size: 1.8rem;
+		}
+
+		#header .nav-list ul a:after {
+			display: none;
+		}
+
+		/* End header */
+
+		/* header */
+		#header .hamburger {
+			display: none;
+		}
+
+		#header .nav-list ul {
+			position: initial;
+			display: block;
+			height: auto;
+			width: fit-content;
+			background-color: transparent;
+		}
+
+		#header .nav-list ul li {
+			display: inline-block;
+		}
+
+		#header .nav-list ul li a {
+			font-size: 1.8rem;
+		}
+
+		#header .nav-list ul a:after {
+			display: none;
+		}
+
+		/* End header */
+
+		#services .service-bottom .service-item {
+			flex-basis: 22%;
+			margin: 1.5%;
+		}
+	}
+}
+
+@media (min-width: 361px) {
+	main section article .description {
+		display: block;
+	}
+
+	main section article {
+		box-shadow: 0px 0px 10px rgb(234, 151, 151);
+		border-radius: 15px;
+	}
+
+	main section div.products {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		align-items: flex-start;
+	}
+
+	main section div.products article {
+		width: 45%;
+	}
+
+	.price,
+	.discount {
+		width: 50%;
+	}
+}
+
+/*codigo que corresponde a producto detalle*/
+.container2 {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 15px;
+	display: flex;
+}
+
+/* Columns */
+.left-column {
+	width: 500px;
+	max-height: 850px;
+	position: relative;
+}
+
+.right-column {
+	width: 35%;
+	margin-top: 60px;
+}
+
+
+/* Left Column */
+.left-column img {
+	width: 100%;
+	height: auto;
+
+}
+
+.left-column .product2:hover {
+	opacity: 1;
+}
+
+
+/* Right Column */
+
+/* Product Description */
+.product-description {
+	border-bottom: 1px solid #E1E8EE;
+	margin-bottom: 20px;
+}
+
+.product-description span {
+	font-size: 8px;
+	color: #358ED7;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	text-decoration: none;
+}
+
+.product-description h1 {
+	font-weight: 300;
+	font-size: 32px;
+	color: #43484D;
+	letter-spacing: -2px;
+}
+
+.product-description p {
+	font-size: 12px;
+	font-weight: 300;
+	color: #86939E;
+	line-height: 24px;
+}
+
+/* Product Configuration */
+.product-color span,
+.cable-config span {
+	font-size: 14px;
+	font-weight: 400;
+	color: #86939E;
+	margin-bottom: 20px;
+	display: inline-block;
+}
+
+/* Product Color */
+
+/* Cable Configuration */
+.cable-choose {
+	margin-bottom: 20px;
+}
+
+.cable-choose button {
+	border: 2px solid #E1E8EE;
+	border-radius: 6px;
+	padding: 13px 20px;
+	font-size: 14px;
+	color: #5E6977;
+	background-color: #fff;
+	cursor: pointer;
+	transition: all .5s;
+}
+
+.cable-choose button:hover,
+.cable-choose button:active,
+.cable-choose button:focus {
+	border: 2px solid #86939E;
+	outline: none;
+}
+
+.cable-config {
+	border-bottom: 1px solid #E1E8EE;
+	margin-bottom: 20px;
+}
+
+.cable-config a {
+	color: #358ED7;
+	text-decoration: none;
+	font-size: 12px;
+	position: relative;
+	margin: 10px 0;
+	display: inline-block;
+}
+
+.cable-config a:before {
+	content: "?";
+	height: 15px;
+	width: 15px;
+	border-radius: 50%;
+	border: 2px solid rgba(53, 142, 215, 0.5);
+	display: inline-block;
+	text-align: center;
+	line-height: 16px;
+	opacity: 0.5;
+	margin-right: 5px;
+}
+
+/* Product Price */
+.product-price {
+	display: flex;
+	align-items: center;
+}
+
+.product-price span {
+	font-size: 26px;
+	font-weight: 300;
+	color: #43474D;
+	margin-right: 20px;
+}
+
+.cart-btn {
+	display: inline-block;
+	background-color: #7F1832;
+	border-radius: 6px;
+	font-size: 16px;
+	color: #FFFFFF;
+	text-decoration: none;
+	padding: 12px 30px;
+	transition: all .5s;
+}
+
+.cart-btn:hover {
+	background-color: rgba(209, 7, 165, 0.867);
+}
+
+/*Fin codigo que corresponde a producto detalle*/
+
+/* Responsive */
+@media (max-width: 940px) {
+	.container {
+		flex-direction: column;
+		margin-top: 60px;
+	}
+
+	.left-column,
+	.right-column {
+		width: 100%;
+	}
+
+	.left-column img {
+		width: 300px;
+		right: 0;
+		top: -65px;
+		left: initial;
+	}
+}
+
+.recipe-ingredients h3{
+	background: #7F1832;
+	color: #fff;
+	display: inline;
+	font-size: 18px;
+	font-weight: 700;
+	padding: 4px 8px;
+	text-transform: uppercase;
+  }
+
+.recipe-ingredients ul.ingredientes {
+	border-bottom: 0;
+	color: #404040;
+	font-size: 16px;
+	list-style: circle;
+	padding: 4px 0;
+	border-right: 1px solid #ecd0d1;
+	margin: 20px 0 0;
+	padding: 0 0 0 18px;
+}
+.recipe-ingredients ol.ingredientes{
+	border-bottom: 0;
+	color: #404040;
+	font-size: 16px;
+	list-style: circle;
+	padding: 4px 0;
+	border-right: 1px solid #ecd0d1;
+	margin: 20px 0 0;
+	padding: 0 0 0 18px;
+}
+
+.recipe-ingredients h2{
+	color: #333;
+	font-size: 13px;
+	line-height: 15px;
+	font-weight: 700;
+	background: #fff;
+	border: 1px solid #333;
+	border-radius: 5px;
+	letter-spacing: 0;
+	margin: 0 4px;
+	padding: 0 7px;
+	display: inline-table;
+	text-decoration: none;
+	text-transform: uppercase;
+}
+
+.ingredient {
+	width: 100%;
+	padding-left: 0;
+	border-bottom: 0;
+	color: #404040;
+	font-size: 16px;
+	list-style: circle;
+	padding: 4px 0;
+  }
+
+.ingredient li {
+	border-color: rgba( 221, 51, 51, 0.05 );
+}
+
+
+
+.banner-1 {
+    width: 700px;
+    height: 300px;
+    border: 3px solid #7F1832;
+    margin: auto;
+    background-size:cover;
+    animation: banner-1 10s infinite;
+    animation-direction:normal;
+    object-fit:scale-down;
+  }
+
+  @keyframes banner-1 {
+    0%, 30% {
+      background-image: url(/img/banner/banner-nuevos-productos.png);
+      opacity: 1;
+    }
+    31%, 34% {
+      opacity: 0.1;
+    }
+    35%, 65% {
+      background-image: url(/img/banner/banner-licor43.jpg);
+      opacity: 1;
+    }
+    66%, 99% {
+      opacity: 0.1;
+    }
+    70%, 100% {
+      background: url(/img/banner/banner-coctel.jpg);
+      opacity: 1;
+    }
+  }
+
+@media (max-width: 535px) {
+	.left-column img {
+		width: 220px;
+		top: -85px;
+	}
+}
+
+@media (min-width: 769px) {
+	main section div.products article {
+		width: 22%;
+	}
 }
