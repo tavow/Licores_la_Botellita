@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+<head>
+    <%- include('./partials/head', { title: "Registrarse" }) %>
+    <link rel="stylesheet" href="/css/form2.css">
+</head>
+
+<body>
+    <header>
+        <%- include('./partials/header') %>
+    </header>
+    <main class="register">
+        <div class="container">
+
+            <div class="center">
+                <div class="sign-up_box">
+                    <h1 class="heading">Formulario de Registro</h1>
+                    <form action="#">
+                        <input type="text" name="nombre" class="name" placeholder="Nombre">
+                        <input type="text" name="apellido" class="name" placeholder="Apellido">
+                        <input type="email" name="correo" class="Email Address" placeholder="Correo Electrónico">
+                        <input type="password" name="password" name="Create a Password" placeholder="Crear una contraseña">
+                        <input type="password" name="re-password" placeholder="Re-type contraseña">
+                        <input type="text" name="telefono" class="name" placeholder="Teléfono">
+                        <input type="text" name="ciudad" class="name" placeholder="Ciudad">
+                        <input type="file" name="img" class="form-input" placeholder="Imagen de Perfil">
+                    </form>
+                </div>
+                <button type="submit" formaction="#" class="btn">Sign Up</button>
+            </div>
+        
+        </div>        
+    </main>
+    <footer class="footer-distributed">
+        <%- include('./partials/footer') %>        
+    </footer>
+    <!-- <script src="/js/validations/register.js"></script> -->
+</body>

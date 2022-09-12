@@ -22,9 +22,11 @@ app.use(session({
 }));
 app.use(cookieParser());
 
+const routesUsers = require('./routes/users');
 const routesMain = require('./routes/main');
-app.use('/', routesMain);
 
+app.use('/', routesMain);
+app.use('/user', routesUsers);
 
 app.listen(PORT, () => {
     console.log(`Servidor corriendo en el puerto ${PORT}`);
