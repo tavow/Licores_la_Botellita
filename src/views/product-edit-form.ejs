@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<!-- Include Head -->
+<%- include('partials/head', { title: "Edición de Productos" }) %>
+<head>
+    <title>Edición</title>
+</head>
+<body>
+	<!-- Header -->
+	<%- include('partials/header'); %>
+	<!-- /Header -->
+
+	<div class="container products-wrapper">
+		<div class="row">
+			<div class="col-12">
+				<h2 class="products-title">Estás editando: <i>"<%= productToEdit.nombre %></i></h2>
+			</div>
+		</div>
+		<div class="col-12">
+			<form action="/productos/edit/<%= productToEdit.id %>?_method=PATCH" method="POST" enctype="multipart/form-data">
+				<div class="row product-detail">
+					<div class="col-12 col-md-6">
+						<label for="nombre" class="form-label">Nombre del producto:</label>
+						<input type="text" id="nombre" name="nombre" placeholder="<%= productToEdit.nombre %>" class="form-input" value="<%= productToEdit.nombre %>">
+					</div>
+					<div class="col-12 col-md-6">
+						<label for="precio" class="form-label">Precio del producto:</label>
+						<input type="number" id="precio" name="precio" placeholder="<%= productToEdit.precio %>" class="form-input" value="<%= productToEdit.precio %>">
+					</div>
+					<div class="col-12 col-md-6">
+						<label for="descuento" class="form-label">Descuento:</label>
+						<input type="number" id="descuento" name="descuento" placeholder="<%= productToEdit.descuento %>" class="form-input" value="<%= productToEdit.descuento %>">
+					</div>
+					<div class="col-12 col-md-6">
+						<label for="categoria" class="form-label">Categoria:</label>
+						<select name="categoria" id="categoria" class="form-input">
+							<option value="<%= productToEdit.categoria %>"><%= productToEdit.categoria %></option>
+							<option value="vino">Vinos</option>
+							<option value="whisky">Whisky</option>							
+							<option value="tequila">Tequila</option>
+							<option value="ron">Ron</option>
+							<option value="coctel">Coctelería</option>														
+						</select>
+					</div>
+					<div class="col-12 col-md-6">
+						<label for="tamano" class="form-label">Tamaño:</label>
+						<input type="number" id="tamano" name="tamano" placeholder="<%= productToEdit.tamano %>" class="form-input" value="<%= productToEdit.tamano%>" >
+					</div>	
+					<div class="col-12 col-md-6">
+						<label for="tipo" class="form-label">Tipo:</label>
+						<select name="tipo" id="tipo" class="form-input">
+							<option value="<%= productToEdit.tipo %>"><%= productToEdit.tipo %></option>
+							<option value="in-sale">En oferta</option>
+							<option value="new">Nuevo</option>							
+							<option value="visited">Últimos agregados</option>
+						</select>
+					</div>										
+					<div class="col-12">
+						<label for="descripcion" class="form-label">Descripción:</label>
+						<textarea name="descripcion" id="descripcion" class="form-input" value="<%= productToEdit.descripcion %>"><%= productToEdit.descripcion %></textarea>
+					</div>
+
+					<div class="col-12">
+						<label for="img" class="form-label">Imagen:</label>
+						<input type="file" name="img" id="img" class="form-input" value="<%= productToEdit.img %>">
+					</div>
+					<div class="col-12">
+						<button type="submit" class="buy-now-button">Guardar producto</button>
+					</div>
+				</div>
+			</form>
+		</div>
+
+	</div>
+	<!-- /todos los productos -->
+
+	<footer>
+		<%- include('partials/footer'); %>
+	  </footer>
+</body>	
+</html>

@@ -1,38 +1,60 @@
 <!DOCTYPE html>
-
 <head>
-    <%- include('./partials/head', { title: "Registrarse" }) %>
-    <link rel="stylesheet" href="/css/form2.css">
+<%- include('./partials/head', { title: "Registrar Usuario nuevo" }) %>
+<link rel="stylesheet" href="/css/form2.css">
 </head>
 
-<body>
+  <body>
     <header>
-        <%- include('./partials/header') %>
+      <%- include('./partials/header') %>
     </header>
-    <main class="register">
-        <div class="container">
 
-            <div class="center">
-                <div class="sign-up_box">
-                    <h1 class="heading">Formulario de Registro</h1>
-                    <form action="#">
-                        <input type="text" name="nombre" class="name" placeholder="Nombre">
-                        <input type="text" name="apellido" class="name" placeholder="Apellido">
-                        <input type="email" name="correo" class="Email Address" placeholder="Correo Electrónico">
-                        <input type="password" name="password" name="Create a Password" placeholder="Crear una contraseña">
-                        <input type="password" name="re-password" placeholder="Re-type contraseña">
-                        <input type="text" name="telefono" class="name" placeholder="Teléfono">
-                        <input type="text" name="ciudad" class="name" placeholder="Ciudad">
-                        <input type="file" name="img" class="form-input" placeholder="Imagen de Perfil">
-                    </form>
-                </div>
-                <button type="submit" formaction="#" class="btn">Sign Up</button>
-            </div>
+    <!-- <main> -->
+      <div class="container">  
+        <form id="contact" action="/user/register" method="POST" class="form" id="form1">
+          <h3>Formulario de Registro</h3>
+          <h4>Contact us today, and get reply with in 24 hours!</h4>
+          <fieldset>
+            <input placeholder="Nombre" type="text" name="nombre" tabindex="1" required autofocus>
+          </fieldset>
+          <fieldset>
+            <input placeholder="Apellido" type="text" name="apellido" tabindex="1" required autofocus>
+          </fieldset>          
+          <fieldset>
+            <input placeholder="Correo" type="email" name="correo" tabindex="2" required>
+          </fieldset>
+          <fieldset>
+            <input placeholder="Password" type="password" name="password" tabindex="2" required>
+          </fieldset>
+          <fieldset>
+            <input placeholder="Repita Password" type="password" name="re_password" tabindex="2" required>
+          </fieldset>
+          <fieldset>
+            <input placeholder="Teléfono" type="tel"  name="telefono" tabindex="3" required>
+          </fieldset>
+          <fieldset>
+            <input placeholder="Ciudad" type="text" name="ciudad" tabindex="4" required>
+          </fieldset>
+          <!-- <fieldset><div class="file-select" id="img" >
+            <input type="file" tabindex="5" name="img" aria-label="Archivo"> </div>
+          </fieldset> -->
+          <fieldset><div class="file-select" id="img" >
+            <input type="file" value="Adjuntar documento" name="img" id="img">
+          </fieldset>
+          <fieldset>
+            <!-- <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button> -->
+            <button type="submit" class="cart-btn">Submit</button><br>
+          </fieldset>
+
+        </form>      
         
-        </div>        
-    </main>
-    <footer class="footer-distributed">
-        <%- include('./partials/footer') %>        
+      </div>
+
+    <!-- </main> -->
+
+    <footer>
+      <%- include('./partials/footer') %>
     </footer>
-    <!-- <script src="/js/validations/register.js"></script> -->
-</body>
+
+  </body>
+</html>

@@ -16,36 +16,41 @@ const usersController = {
   processRegister: async (req, res) => {
     console.log('process register');
     const validations = validationResult(req);
-    if (validations.errors.length > 0) {
-      return res.render("register", {
-        errors: validations.mapped(),
-        old: req.body,
-      });
-    }
+    console.log("length" + validations.errors);
+    // if (validations.errors.length > 0) {
+    //   return res.render("register", {
+    //     errors: validations.mapped(),
+    //     old: req.body,
+    //   });
+    // }
     // let producto = products.find(producto => producto.id == id);
-    let userInDB = users.find(users =>  users.correo == req.body.email);
+    let usuario = users.find(item => item.correo == req.body.correo);
+    let userInDB = users.find(user =>  user.correo == req.body.correo);
     // let userInDB = await db.user.findAll({
     //   where: {
     //     email: req.body.email,
     //   },
     // });
-    console.log(req.body.email);
-    console.log('users.correo: ' + users.correo);
-    console.log('Resultado busqueda email en json'+ userInDB);
+    console.log(req.body.correo);
+    console.log(usuario);
+    let email = req.body.correo;
+    console.log('users.userInDB: ');
+    console.log('Resultado busqueda email en json');
 
-    // if (userInDB.length > 0) {
-    //   return res.render("users/register", {
-    //     errors: {
-    //       email: {
-    //         msg: "Este email ya se encuentra registrado",
-    //       },
-    //     },
-    //     old: req.body,
-    //   });
-    // }
+    if (userInDB !== undefined) {
+      return res.render("register", {
+        errors: {
+          email: {
+            msg: "Este email ya se encuentra registrado",
+          },
+        },
+        old: req.body,
+      });
+      console.log('Este email ya se encuentra registrado');
+    }
 
     if (req.body.password !== req.body.re_password) {
-      return res.render("users/register", {
+      return res.render("user/register", {
         errors: {
           re_password: {
             msg: "Las contraseñas no coinciden",
@@ -60,15 +65,17 @@ const usersController = {
 		} else {
 			img = 'default-foto.png'
 		}
+    console.log('Listos para crear al usuario');
     let userToCreate = {
         id: users[users.length - 1].id + 1,
         ...req.body,
               password: bcryptjs.hashSync(req.body.password, 10),
+              re_password: bcryptjs.hashSync(req.body.password, 10),
         img: img
       };
       users.push(userToCreate)
       fs.writeFileSync(UsersFilePath, JSON.stringify(users, null, ' '));
-      res.redirect('/users/register');
+      res.redirect('/user/register');
       
   },
 
@@ -80,17 +87,18 @@ const usersController = {
     const resultValidation = validationResult(req);
     console.log('Process Login');
     console.log(req.body.password);
-    console.log(req.body.email);
+    console.log(req.body.correo);
     // console.log(users);
-    let usuario = users.find(usuario => usuario.correo == req.body.email);
+    let usuario = users.find(item => item.correo == req.body.correo);
     console.log(usuario);
 
-    if (resultValidation.errors.length > 0) {
-      return res.render("users/login", {
-        errors: resultValidation.mapped(),
-        old: req.body,
-      });
-    }
+    // if (resultValidation.errors.length > 0) {
+    //   console.log(resultValidation.errors.length);
+    //   return res.render("login", {
+    //     errors: resultValidation.mapped(),
+    //     old: req.body,
+    //   });
+    // }
 
     // let userToLogin = await db.user.findOne({
     //   where: {
@@ -120,10 +128,10 @@ const usersController = {
         // if (usuario.category_id === 1) {
         //   return res.redirect("/admin/");
         // }
-        return res.redirect("/users/profile");
+        return res.render("profile",{usuario});
       }
 
-      return res.render("users/login", {
+      return res.render("login", {
         errors: {
           generico: {
             msg: "Usuario o contraseña incorrecta",
@@ -132,7 +140,7 @@ const usersController = {
       });
     }
 
-    return res.render("users/login", {
+    return res.render("login", {
       errors: {
         email: {
           msg: "Este mail no se encuentra registrado",
@@ -148,7 +156,7 @@ const usersController = {
       },
     });
 
-    return res.render("users/userEdit", { user });
+    return res.render("userEdit", { user });
   },
   processEdit: async (req, res) => {
     db.user.update(
@@ -163,13 +171,13 @@ const usersController = {
         },
       }
     ).then(() => {
-      return res.redirect('/users/profile');
+      return res.redirect('/profile');
     });
 
   },
 
   profile: (req, res) => {
-    return res.render("users/userProfile", {
+    return res.render("profile", {
       user: req.session.userLogged /*usé user en la vista de profile*/,
     });
   },

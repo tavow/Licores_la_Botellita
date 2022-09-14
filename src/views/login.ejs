@@ -1,5 +1,7 @@
 <!DOCTYPE html>
+<head>
 <%- include('./partials/head', { title: "Iniciar sesión" }) %>
+</head>
 
   <body>
     <header>
@@ -10,12 +12,13 @@
     <div class="container right-panel-active">
       <!-- Sign Up -->
       <div class="container__form container--signup">
-        <form action="#" class="form" id="form1">
+        <form action="/user/login" method="POST" class="form" id="form1">
           <h2 class="form__title">Login</h2>
           <!-- <input type="text" placeholder="User" class="input" /> -->
-          <input type="email" placeholder="Email" class="input" />
-          <input type="password" placeholder="Password" class="input" />
+          <input type="email" name="correo" placeholder="Email" class="input" />
+          <input type="password" name="password" placeholder="Password" class="input" />
           <!-- <button class="btn">Sign Up</button> -->
+
           <button type="submit" class="cart-btn">Login</button><br>
         </form>
       </div>
@@ -48,3 +51,4 @@
       <%- include('./partials/footer') %>
     </footer>
   </body>
+  </html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <%- include('partials/header'); %>
+    </header> 
+
+    <h1> Listado de Receta <%= receta.titulo %> </h1>
+    <br>
+
+    <main class="container2">
+
+        <!-- Left Column / Headphones Image -->
+        <div class="left-column">
+          <img class="product2" src="../img/coctel/<%= receta.img %>" alt="">
+        </div>
+    
+    
+        <!-- Right Column -->
+        <div class="right-column">
+    
+      <!-- Product Description -->
+      <div class="recipe-ingredients">
+        <h3>Ingredientes</h3>
+        <ul class="ingredientes">
+          <% for(let i =0; i < receta.ingredientes.length; i++) { %>              
+            <li itemprop="ingredient" class="ingredient"> <span class="descripcion">
+              <%= receta.ingredientes[i] %></li> </span>
+            <% }  %>
+
+        </ul> <br>
+      </div><!-- ingredients -->
+    
+          <div class="recipe-ingredients">
+            <h3>Instrucciones</h3>
+            <ol class="ingredientes">
+              <% for(let i =0; i < receta.instrucciones.length; i++) { %>              
+              <li itemprop="ingredient" class="ingredient"><%= receta.instrucciones[i] %></li>
+              <% }  %>
+            </ol>
+          </div><!-- .instructions -->
+         
+          <br>
+    
+        </div>
+        </div>
+      </main>
+
+    <footer>
+        <%- include('partials/footer'); %>
+    </footer>
+    
+</body>
+</html>

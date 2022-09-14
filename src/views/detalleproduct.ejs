@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/vendors/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/footer-distributed-with-address-and-phones.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+    <script src="https://kit.fontawesome.com/6822eedb87.js" crossorigin="anonymous"></script>
+    <title>Productos</title>
+
+</head>
+
+<body>
+    <header>
+        <%- include('partials/header'); %>
+    </header> 
+ 
+    <main class="container2">
+
+        <!-- Left Column / Headphones Image -->
+        <div class="left-column">
+           <img class="product2" src="../img/<%= producto.categoria %>/<%= producto.img %>" alt="">
+        </div>
+  
+  
+        <!-- Right Column -->
+        <div class="right-column">
+  
+          <!-- Product Description -->
+          <div class="product-description">
+            <span><%= producto.categoria %></span>
+            <h1><%= producto.nombre %></h1> 
+            <p><%= producto.descripcion %></p>
+          </div>
+  
+          <!-- Product Configuration -->
+          <div class="product-configuration">
+  
+          <!-- Cable Configuration -->
+            <div class="cable-config">
+              <span>Tamaño de la botella</span>
+  
+              <div class="cable-choose">
+                <p><%= producto.tamano %></p>
+              </div>
+  
+            </div>
+          </div>
+  
+          <!-- Product Pricing -->
+          <div class="product-price">
+            <span>$ <%= producto.precio %></span>
+            <a href="#" class="cart-btn">Agregar al carrito</a>
+          </div>
+
+          <a href="/products/edit/<%= producto.id %>" class="action-button edit">EDITAR PRODUCTO</a>
+          <form action="/products/delete/<%= producto.id %>?_method=DELETE" method="POST" style="display: inline-flex">
+            <button type="submit" class="action-button delete">ELIMINAR</button>
+          </form>
+
+        </div>
+      </main>
+   
+  <footer>
+        <%- include('partials/footer'); %>
+  </footer>
+
+</body>
+
+</html>
