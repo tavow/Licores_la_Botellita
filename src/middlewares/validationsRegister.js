@@ -3,7 +3,7 @@ const { body } = require('express-validator');
 const fs = require('fs');
 
 const validationsRegister = [
-    body('name').notEmpty().withMessage('Debes ingresar un nombre'),
+    body('nombre').notEmpty().withMessage('Debes ingresar un nombre'),
     body('email').notEmpty().withMessage('Debes ingresar un email').bail()
         .isEmail().withMessage('Debes ingresar un email válido'),
     body('password').notEmpty().withMessage('Debes ingresar una contraseña').bail()

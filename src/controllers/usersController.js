@@ -50,7 +50,7 @@ const usersController = {
     }
 
     if (req.body.password !== req.body.re_password) {
-      return res.render("user/register", {
+      return res.render("register", {
         errors: {
           re_password: {
             msg: "Las contraseñas no coinciden",
@@ -177,6 +177,7 @@ const usersController = {
   },
 
   profile: (req, res) => {
+    console.log("Profile");
     return res.render("profile", {
       user: req.session.userLogged /*usé user en la vista de profile*/,
     });

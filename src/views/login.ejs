@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <head>
 <%- include('./partials/head', { title: "Iniciar sesión" }) %>
+<link rel="stylesheet" href="/css/form2.css">
 </head>
 
   <body>
@@ -9,43 +10,27 @@
     </header>
 
     <!-- <main> -->
-    <div class="container right-panel-active">
-      <!-- Sign Up -->
-      <div class="container__form container--signup">
-        <form action="/user/login" method="POST" class="form" id="form1">
-          <h2 class="form__title">Login</h2>
-          <!-- <input type="text" placeholder="User" class="input" /> -->
-          <input type="email" name="correo" placeholder="Email" class="input" />
-          <input type="password" name="password" placeholder="Password" class="input" />
-          <!-- <button class="btn">Sign Up</button> -->
+      <div class="container">  
+        <form id="contact" action="/user/login" method="POST" class="form" id="form1">
+          <h3>Login</h3>
+          <h4>Formulario</h4>       
+          <fieldset>
+            <input placeholder="Correo" type="email" name="correo" tabindex="2" required>
+          </fieldset>
+          <fieldset>
+            <input placeholder="Password" type="password" name="password" tabindex="2" required>
+          </fieldset>
 
-          <button type="submit" class="cart-btn">Login</button><br>
-        </form>
+          <fieldset>
+            <!-- <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button> -->
+            <button type="submit" class="cart-btn">Submit</button><br>
+          </fieldset>
+
+        </form>      
+        
       </div>
 
-      <!-- Sign In -->
-      <div class="container__form container--signin">
-        <form action="#" class="form" id="form2">
-          <h2 class="form__title">Sign In</h2>
-          <input type="email" placeholder="Email" class="input" />
-          <input type="password" placeholder="Password" class="input" />
-          <a href="#" class="link">Forgot your password?</a>
-          <button class="btn">Sign In</button>
-        </form>
-      </div>
-
-      <!-- Overlay -->
-      <div class="container__overlay">
-        <div class="overlay">
-          <div class="overlay__panel overlay--left">
-            <!-- <button class="btn" id="signIn">Sign In</button> -->
-          </div>
-          <div class="overlay__panel overlay--right">
-            <!-- <button class="btn" id="signUp">Sign Up</button> -->
-          </div>
-        </div>
-      </div>
-    </div> <!-- </main> -->
+      <!-- </main> -->
 
     <footer>
       <%- include('./partials/footer') %>
