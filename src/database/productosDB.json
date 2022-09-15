@@ -189,13 +189,13 @@
  {
   "id": 18,
   "nombre": "Tequila Don Julio Reserva Silver",
-  "descripcion": "El Don Julio Reserva es un tequila con un 38 % de alcohol, recibe su nombre del fundador de la destilería, Don Julio González Estrada quien revolucionó la fabricación del tequila reposado en México. Su color es plateado y cristalino con sabor ligeramente dulce, ágave puro, con un final a pimienta fresco y limpio. Tiene aromas a limón, lima y toronja. Un coctel para preparar: Margarita Blanco. País: México.",
-  "precio": 180000,
-  "descuento": 0,
+  "precio": "180000",
+  "descuento": "10",
   "categoria": "tequila",
-  "img": "tequila.jpg",
-  "tamano": 700,
-  "tipo": "banner"
+  "tamano": "700",
+  "tipo": "banner",
+  "descripcion": "El Don Julio Reserva es un tequila con un 38 % de alcohol, recibe su nombre del fundador de la destilería, Don Julio González Estrada quien revolucionó la fabricación del tequila reposado en México. Su color es plateado y cristalino con sabor ligeramente dulce, ágave puro, con un final a pimienta fresco y limpio. Tiene aromas a limón, lima y toronja. Un coctel para preparar: Margarita Blanco. País: México.",
+  "img": "tequila.jpg"
  },
  {
   "id": 19,

@@ -189,5 +189,16 @@
   "ciudad": "Cartagena",
   "img": "",
   "submit": ""
+ },
+ {
+  "id": 18,
+  "nombre": "Bibiana",
+  "apellido": "Osorio",
+  "correo": "vivianaoso@gmail.com",
+  "password": "$2a$10$YoCOweB4qEma8qjerM2dL.UbNG/jrvoWXky5Vmuly979aIrv1hoPC",
+  "re_password": "$2a$10$B2HExoEHWzJj/mjSkXn4r.T.ayB6kf7Lb0303kBBJ4Y2WmJR/axNi",
+  "telefono": "3103789746",
+  "ciudad": "Medellin",
+  "img": "descarga.jfif"
  }
 ]
