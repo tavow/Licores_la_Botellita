@@ -1,39 +1,48 @@
 <!DOCTYPE html>
+
 <head>
-<%- include('./partials/head', { title: "Iniciar sesión" }) %>
-<link rel="stylesheet" href="/css/form2.css">
+  <%- include('./partials/head', { title: "Iniciar sesión" }) %>
+    <link rel="stylesheet" href="/css/form2.css">
 </head>
 
-  <body>
-    <header>
-      <%- include('./partials/header') %>
-    </header>
+<body>
+  <header>
+    <%- include('./partials/header') %>
+  </header>
 
-    <!-- <main> -->
-      <div class="container">  
-        <form id="contact" action="/user/login" method="POST" class="form" id="form1">
-          <h3>Login</h3>
-          <h4>Formulario</h4>       
-          <fieldset>
-            <input placeholder="Correo" type="email" name="correo" tabindex="2" required>
-          </fieldset>
-          <fieldset>
-            <input placeholder="Password" type="password" name="password" tabindex="2" required>
-          </fieldset>
+  <!-- <main> -->
+  <div class="container">
+    <form id="contact" action="/user/login" method="POST" class="form" id="form1">
+      <h3>Login</h3>
+      <h4>Formulario</h4>
+      <fieldset>
+        <input placeholder="Correo" type="email" name="correo" tabindex="2" required>
+      </fieldset>
+      <fieldset>
+        <input placeholder="Password" type="password" name="password" tabindex="3" required>
+      </fieldset>
+      <fieldset>
+        <input type="checkbox" name="remember_user" id="remember_user" tabindex="6" > 
+      </fieldset>    
+      <fieldset>
+        <label for="remember_user">
+         Recordarme </label>
+      </fieldset>
+      <input type="text" id="categoria" name="categoria"  tabindex="5" value="false" hidden><br>
+      <fieldset>
+        <!-- <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button> -->
+        <button type="submit" class="cart-btn">Submit</button><br>
+      </fieldset>
 
-          <fieldset>
-            <!-- <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button> -->
-            <button type="submit" class="cart-btn">Submit</button><br>
-          </fieldset>
+    </form>
 
-        </form>      
-        
-      </div>
+  </div>
 
-      <!-- </main> -->
+  <!-- </main> -->
 
-    <footer>
-      <%- include('./partials/footer') %>
-    </footer>
-  </body>
-  </html>
+  <footer>
+    <%- include('./partials/footer') %>
+  </footer>
+</body>
+
+</html>

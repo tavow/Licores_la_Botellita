@@ -168,15 +168,14 @@
  },
  {
   "id": 16,
-  "name": "Alberto Perez",
+  "nombre": "Alberto Perez",
   "correo": "aperez@tronex.com",
-  "phone": "3127570700",
   "password": "$2a$10$m0PgyuzwRFK2kHM8/bhUs.5TjyxDzrz4tYp6OhlEntuacx2joVtXi",
   "re_password": "Digital2022",
   "telefono": "3127570799",
   "ciudad": "Envigado",
   "check": "on",
-  "img": "default-foto.png"
+  "img": "einstein-lengua.jpg"
  },
  {
   "id": 17,
@@ -187,8 +186,7 @@
   "re_password": "$2a$10$nMWNvqhauB1R/UVE7iK9ueqgPAGtp7Y2xRMfqk7WBndL2moNzfWgm",
   "telefono": "3127570799",
   "ciudad": "Cartagena",
-  "img": "",
-  "submit": ""
+  "img": "default-foto.png"
  },
  {
   "id": 18,

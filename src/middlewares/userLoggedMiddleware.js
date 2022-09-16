@@ -7,10 +7,12 @@ async function  userLoggedMiddleware (req, res, next) {
     res.locals.isLogged = false;
 
     let emailInCookie = req.cookies.userEmail; 
+    console.log('emailInCookie: ' + emailInCookie);
     let userFromCookie;
 
     if (emailInCookie){
         let usuario = users.find(usuario => usuario.correo == emailInCookie);
+        console.log('Looged: ' + usuario);
         // userFromCookie =  await db.user.findOne({
         //     where: {
         //         email: emailInCookie
@@ -18,8 +20,8 @@ async function  userLoggedMiddleware (req, res, next) {
         // }).catch(function () {
         //     console.log("Promise Rejected");
         // });
-
-        userFromCookie =  await users.find(usuario => usuario.correo == emailInCookie);         
+        
+        userFromCookie =  users.find(usuario => usuario.correo == emailInCookie);         
             
        console.log(userFromCookie.dataValues);
     }

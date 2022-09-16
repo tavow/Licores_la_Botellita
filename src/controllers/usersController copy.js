@@ -88,6 +88,7 @@ const usersController = {
     console.log('Process Login');
     console.log(req.body.password);
     console.log(req.body.correo);
+    // console.log(users);
     let usuario = users.find(item => item.correo == req.body.correo);
     console.log(usuario);
 
@@ -111,18 +112,17 @@ const usersController = {
         req.body.password,
         usuario.password
       );
-      // if (req.body.password == usuario.password) {
-      //   console.log('Todo bien'); 
-      //   passwordOk = true; 
-      // };
+      if (req.body.password == usuario.password) {
+        console.log('Todo bien'); 
+        passwordOk = true; 
+      };
       console.log('passsword: ' + passwordOk);
       if (passwordOk) {
         delete usuario.password;
         req.session.userLogged = usuario;
-        console.log(req.body.remember_user);
         console.log(usuario);
-        if (req.body.remember_user) {
-          res.cookie("userEmail", req.body.correo, { maxAge: 1000 * 60 * 5 });
+        if (req.body.check_login) {
+          res.cookie("userEmail", req.body.email, { maxAge: 1000 * 60 * 5 });
         }
 
         // if (usuario.category_id === 1) {
@@ -179,7 +179,7 @@ const usersController = {
   profile: (req, res) => {
     console.log("Profile");
     return res.render("profile", {
-      usuario: req.session.userLogged /*usé user en la vista de profile*/,
+      user: req.session.userLogged /*usé user en la vista de profile*/,
     });
   },
   logout: (req, res) => {
