@@ -117,9 +117,9 @@ const usersController = {
       // };
       console.log('passsword: ' + passwordOk);
       if (passwordOk) {
-        delete usuario.password;
+        // delete usuario.password;
         req.session.userLogged = usuario;
-        console.log(req.body.remember_user);
+        console.log('remember_user: ',req.body.remember_user);
         console.log(usuario);
         if (req.body.remember_user) {
           res.cookie("userEmail", req.body.correo, { maxAge: 1000 * 60 * 5 });
@@ -130,11 +130,11 @@ const usersController = {
         // }
         return res.render("profile",{usuario});
       }
-
+      console.log('Usuario o contraseña incorrecta');
       return res.render("login", {
         errors: {
           generico: {
-            msg: "Usuario o contraseña incorrecta",
+            msg: "Usuario o contraseña incorrecta",         
           },
         },
       });
