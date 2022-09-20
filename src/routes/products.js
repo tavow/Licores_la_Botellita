@@ -8,6 +8,7 @@ const upload = require('../middlewares/multer');
 
 // La Botellita
 router.get('/', productsController.leer);
+router.get('/listar', productsController.listar);
 
 router.get('/ron', productsController.ron);
 router.get('/vinos', productsController.vino);

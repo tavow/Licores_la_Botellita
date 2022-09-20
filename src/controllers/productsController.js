@@ -5,11 +5,13 @@ const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
 
 const controladorProductos = {
   leer: (req, res) => {
-    console.log('ProdutosController');
+    console.log('ProdutosController leer');
     res.render("productos");
   },
   listar: (req, res) => {
+    console.log('ProdutosController listar');
     res.send("Bienvenido al producto " + req.params.idProducto);
+
   },
   crear: (req, res) => {
     console.log('ESTAMOS EN EL CONTROLADOR DE CREAR');
