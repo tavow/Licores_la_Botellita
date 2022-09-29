@@ -187,6 +187,15 @@ const usersController = {
     req.session.destroy();
     return res.redirect("/");
   },
+  listar: (req, res) => {
+    console.log('usersController listar');
+    let insert = [];
+    for (let i = 0; i < users.length -1; i++) {      
+      insert[i] = '(' + users[i].id + ', "' + users[i].nombre + '", "' + users[i].apellido + '", "' + users[i].correo + '", ' + users[i].password + ', "' + users[i].telefono + '", "' + users[i].ciudad + '", "' + users[i].categoria +  '", "' +'1999-06-06' + '")';
+    }
+    console.log(insert);    
+    res.render("productos");    
+  },
 };
 
 module.exports = usersController;

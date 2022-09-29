@@ -3,6 +3,10 @@ const path = require("path");
 const productsFilePath = path.join(__dirname, '../database/productosDB.json');
 const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
 
+const db = require("../database/models");
+const { Sequelize } = require("sequelize");
+const Op = Sequelize.Op;
+
 const controladorProductos = {
   leer: (req, res) => {
     console.log('ProdutosController leer');
@@ -10,8 +14,16 @@ const controladorProductos = {
   },
   listar: (req, res) => {
     console.log('ProdutosController listar');
-    res.send("Bienvenido al producto " + req.params.idProducto);
-
+    // res.send("Bienvenido al producto " + req.params.idProducto);
+    let insert = [];
+    let insertimage = [];
+    for (let i = 0; i < products.length -1; i++) {      
+      insert[i] = 'INSERT INTO `product` VALUES (' + products[i].id + ', "' + products[i].nombre + '", "' + products[i].descripcion + '", ' + products[i].precio + ', "' + products[i].descuento + '", "' + products[i].categoria + '", "' + products[i].tamano + '", "' + products[i].tipo +  '", ' + products[i].id +  ', "' + '1999-06-06' + '")';
+      insertimage[i] = 'INSERT INTO `image` VALUES (' + products[i].id + ', "' + products[i].img + '")';
+    }
+    console.log(insert);    
+    console.log(insertimage);
+    res.render("productos");    
   },
   crear: (req, res) => {
     console.log('ESTAMOS EN EL CONTROLADOR DE CREAR');
