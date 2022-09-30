@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos</title>
+</head>
+
+<body>
+    <header>
+        <%- include('partials/header'); %>
+    </header>
+
+    <main class="main">
+        <section class="last-visit">
+            <div class="products">
+                <% for (let i=0; i < producto.length; i++){ %>
+                    <article>
+                        <a href="/products/<%= producto[i].idproducto %> ">
+                            <img src="../img/<%= producto[i].categoria %>/<%= producto[i].idimagen %>"
+                                alt="<%= producto[i].categoria %>" class="product_img">
+                        </a>
+                        <div class="main-article">
+                            <i class="fa-solid fa-cart-plus"></i>
+                            <p class="price">$<%= producto[i].precio %> </p>
+                            <h4 class="description">  <%= producto[i].descripcion %> </h4> <br>
+                            <h4 class="Tamañobotella">  <%= producto[i].tamano %>  </h4> <br>
+                            <p class="descuento">  <%= producto[i].descuento %>  </p>
+                        </div>
+                        <br>
+                    </article>
+                    <% } %>
+        </section>
+    </main>
+
+    <footer>
+        <%- include('partials/footer'); %>
+    </footer>
+
+</body>
+
+</html>

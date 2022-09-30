@@ -7,6 +7,9 @@ const db = require("../database/models");
 const { Sequelize } = require("sequelize");
 const Op = Sequelize.Op;
 
+const Productos = db.producto;
+const Imagen = db.imagen;
+
 const controladorProductos = {
   leer: (req, res) => {
     console.log('ProdutosController leer');
@@ -17,13 +20,13 @@ const controladorProductos = {
     // res.send("Bienvenido al producto " + req.params.idProducto);
     let insert = [];
     let insertimage = [];
-    for (let i = 0; i < products.length -1; i++) {      
-      insert[i] = 'INSERT INTO `product` VALUES (' + products[i].id + ', "' + products[i].nombre + '", "' + products[i].descripcion + '", ' + products[i].precio + ', "' + products[i].descuento + '", "' + products[i].categoria + '", "' + products[i].tamano + '", "' + products[i].tipo +  '", ' + products[i].id +  ', "' + '1999-06-06' + '")';
+    for (let i = 0; i < products.length - 1; i++) {
+      insert[i] = 'INSERT INTO `product` VALUES (' + products[i].id + ', "' + products[i].nombre + '", "' + products[i].descripcion + '", ' + products[i].precio + ', "' + products[i].descuento + '", "' + products[i].categoria + '", "' + products[i].tamano + '", "' + products[i].tipo + '", ' + products[i].id + ', "' + '1999-06-06' + '")';
       insertimage[i] = 'INSERT INTO `image` VALUES (' + products[i].id + ', "' + products[i].img + '")';
     }
-    console.log(insert);    
+    console.log(insert);
     console.log(insertimage);
-    res.render("productos");    
+    res.render("productos");
   },
   crear: (req, res) => {
     console.log('ESTAMOS EN EL CONTROLADOR DE CREAR');
@@ -46,29 +49,58 @@ const controladorProductos = {
     res.render('product-edit-form', { productToEdit })
   },
   vino: (req, res) => {
-    let categoria = 'vino';
-    let producto = [];
-    for (let i = 0; i < products.length; i++) {
-      if (products[i].categoria == categoria) {
-        producto = producto.concat(products[i]);
+    // let categoria = 'vino';
+    // let producto = [];
+    // for (let i = 0; i < products.length; i++) {
+    //   if (products[i].categoria == categoria) {
+    //     producto = producto.concat(products[i]);
+    //   }
+    // }
+    // console.log(producto);
+    // res.render("productos2", { producto: producto });
+    // res.send('Listado de vinos');
+
+    var producto = Productos.findAll({
+      where: {
+        categoria: {
+          [Op.eq]: 'vino'
+        }
       }
-    }
-    console.log(producto);
-    res.render("productos2", { producto: producto });
-    res.send('Listado de vinos');
+    })
+      .then(producto => {
+        console.log(producto);
+        res.render("productos2_listar", { producto: producto });
+      });
+
   },
   ron: (req, res) => {
     // let producto = listaProductos.find(producto => producto.categoria == "ron");
-    let categoria = 'ron';
-    let producto = [];
-    for (let i = 0; i < products.length; i++) {
-      if (products[i].categoria == categoria) {
-        producto = producto.concat(products[i]);
+    // let categoria = 'ron';
+    // let producto = [];
+    // for (let i = 0; i < products.length; i++) {
+    //   if (products[i].categoria == categoria) {
+    //     producto = producto.concat(products[i]);
+    //   }
+    // }
+    // console.log(producto);
+    // res.render("productos2", { producto: producto });
+    // res.send('Listado de ron');
+
+    var producto = Productos.findAll({
+      include: {
+        model: Imagen,
+        as: 'imagen',
+      },
+      where: {
+        categoria: {
+          [Op.eq]: 'ron'
+        }
       }
-    }
-    console.log(producto);
-    res.render("productos2", { producto: producto });
-    res.send('Listado de ron');
+    })
+    .then(producto => {
+      console.log(producto);
+      res.render("productos2_listar", { producto: producto });
+    });
   },
   whisky: (req, res) => {
     let categoria = 'whisky';
@@ -124,49 +156,49 @@ const controladorProductos = {
     res.redirect('/productos');
   },
   store: (req, res) => {
-		let img
-		console.log(req.files);
-		if(req.files[0] != undefined){
-			img = req.files[0].filename
-		} else {
-			img = 'default-image.png'
-		}
-		let newProduct = {
-			id: products[products.length - 1].id + 1,
-			...req.body,
-			img: img
-		};
-		products.push(newProduct)
-		fs.writeFileSync(productsFilePath, JSON.stringify(products, null, ' '));
-		res.redirect('/');
-	},
+    let img
+    console.log(req.files);
+    if (req.files[0] != undefined) {
+      img = req.files[0].filename
+    } else {
+      img = 'default-image.png'
+    }
+    let newProduct = {
+      id: products[products.length - 1].id + 1,
+      ...req.body,
+      img: img
+    };
+    products.push(newProduct)
+    fs.writeFileSync(productsFilePath, JSON.stringify(products, null, ' '));
+    res.redirect('/');
+  },
   update: (req, res) => {
-		let id = req.params.id;
-		let productToEdit = products.find(product => product.id == id)
-		let img
+    let id = req.params.id;
+    let productToEdit = products.find(product => product.id == id)
+    let img
 
-		if(req.files[0] != undefined){
-			img = req.files[0].filename
-		} else {
-			img = productToEdit.img
-		}
+    if (req.files[0] != undefined) {
+      img = req.files[0].filename
+    } else {
+      img = productToEdit.img
+    }
 
-		productToEdit = {
-			id: productToEdit.id,
-			...req.body,
-			img: img,
-		};
+    productToEdit = {
+      id: productToEdit.id,
+      ...req.body,
+      img: img,
+    };
 
-		let newProducts = products.map(product => {
-			if (product.id == productToEdit.id) {
-				return product = {...productToEdit};
-			}
-			return product;
-		})
+    let newProducts = products.map(product => {
+      if (product.id == productToEdit.id) {
+        return product = { ...productToEdit };
+      }
+      return product;
+    })
 
-		fs.writeFileSync(productsFilePath, JSON.stringify(newProducts, null, ' '));
-		// res.redirect('/');
+    fs.writeFileSync(productsFilePath, JSON.stringify(newProducts, null, ' '));
+    // res.redirect('/');
     res.render("product-response");
-	}
+  }
 };
 module.exports = controladorProductos;

@@ -4,14 +4,14 @@ const {
 
 module.exports = sequelize => {
   const attributes = {
-    idproducto: {
+    idusuario: {
       type: DataTypes.INTEGER(11),
       allowNull: false,
       defaultValue: null,
       primaryKey: true,
       autoIncrement: false,
       comment: null,
-      field: "idproducto"
+      field: "idusuario"
     },
     nombre: {
       type: DataTypes.STRING(100),
@@ -22,35 +22,62 @@ module.exports = sequelize => {
       comment: null,
       field: "nombre"
     },
-    descripcion: {
-      type: DataTypes.STRING(400),
-      allowNull: true,
-      defaultValue: null,
-      primaryKey: false,
-      autoIncrement: false,
-      comment: null,
-      field: "descripcion"
-    },
-    precio: {
-      type: DataTypes.DOUBLE,
-      allowNull: true,
-      defaultValue: null,
-      primaryKey: false,
-      autoIncrement: false,
-      comment: null,
-      field: "precio"
-    },
-    descuento: {
+    apellido: {
       type: DataTypes.STRING(100),
       allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
       comment: null,
-      field: "descuento"
+      field: "apellido"
+    },
+    correo: {
+      type: DataTypes.STRING(100),
+      allowNull: true,
+      defaultValue: null,
+      primaryKey: false,
+      autoIncrement: false,
+      comment: null,
+      field: "correo"
+    },
+    password: {
+      type: DataTypes.STRING(100),
+      allowNull: true,
+      defaultValue: null,
+      primaryKey: false,
+      autoIncrement: false,
+      comment: null,
+      field: "password"
+    },
+    telefono: {
+      type: DataTypes.STRING(100),
+      allowNull: true,
+      defaultValue: null,
+      primaryKey: false,
+      autoIncrement: false,
+      comment: null,
+      field: "telefono"
+    },
+    direccion: {
+      type: DataTypes.STRING(255),
+      allowNull: true,
+      defaultValue: null,
+      primaryKey: false,
+      autoIncrement: false,
+      comment: null,
+      field: "direccion"
+    },
+    ciudad: {
+      type: DataTypes.STRING(100),
+      allowNull: true,
+      defaultValue: null,
+      primaryKey: false,
+      autoIncrement: false,
+      comment: null,
+      field: "ciudad"
     },
     categoria: {
-      type: DataTypes.STRING(100),
+      type: DataTypes.INTEGER(4),
       allowNull: true,
       defaultValue: null,
       primaryKey: false,
@@ -58,72 +85,48 @@ module.exports = sequelize => {
       comment: null,
       field: "categoria"
     },
-    tamano: {
-      type: DataTypes.STRING(100),
-      allowNull: true,
-      defaultValue: null,
-      primaryKey: false,
-      autoIncrement: false,
-      comment: null,
-      field: "tamano"
-    },
-    tipo: {
-      type: DataTypes.STRING(100),
-      allowNull: true,
-      defaultValue: null,
-      primaryKey: false,
-      autoIncrement: false,
-      comment: null,
-      field: "tipo"
-    },
-    idimagen: {
+    idavatar: {
       type: DataTypes.INTEGER(11),
       allowNull: false,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
       comment: null,
-      field: "idimagen",
+      field: "idavatar",
       references: {
-        key: "idimagen",
-        model: "imagen_model"
+        key: "idavatar",
+        model: "avatar_model"
       }
     },
-    datatimeproducto: {
+    datatimeusuario: {
       type: DataTypes.DATE,
       allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
       comment: null,
-      field: "datatimeproducto"
+      field: "datatimeusuario"
     }
   };
   const options = {
-    tableName: "producto",
-    timestamps: false,
+    tableName: "usuario",
     comment: "",
     indexes: [{
-      name: "fk_imagen_producto",
+      name: "fk_avatar_usuario",
       unique: false,
       type: "BTREE",
-      fields: ["idimagen"]
-    }, {
-      name: "idproducto_idx",
-      unique: false,
-      type: "BTREE",
-      fields: ["idproducto"]
+      fields: ["idavatar"]
     }]
   };
-  // const ProductoModel = sequelize.define("producto_model", attributes, options);
-  const Producto = sequelize.define("producto", attributes, options);
+  // const UsuarioModel = sequelize.define("usuario_model", attributes, options);
+  const Usuario = sequelize.define("usuario", attributes, options);
 
-  Producto.associate = function(models){
-    Producto.hasOne(models.imagen, {
-      foreignKey: "idimagen",
-      as: "imagen"       
-   });
-}
+  Usuario.associate = function(models){
+    Usuario.hasOne(models.usuario, {
+      foreignKey: "idavatar",
+      as: "usuario"       
+   })
+  }
 
-  return Producto ;
+  return Usuario;
 };

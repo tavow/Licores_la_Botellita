@@ -4,40 +4,40 @@ const {
 
 module.exports = sequelize => {
   const attributes = {
-    idimagen: {
+    idavatar: {
       type: DataTypes.INTEGER(11),
       allowNull: false,
       defaultValue: null,
       primaryKey: true,
       autoIncrement: false,
       comment: null,
-      field: "idimagen"
+      field: "idavatar"
     },
-    nombreimagen: {
+    nombre: {
       type: DataTypes.STRING(100),
       allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
       comment: null,
-      field: "nombreimagen"
+      field: "nombre"
     }
   };
   const options = {
-    tableName: "imagen",
-    timestamps: false,
+    tableName: "avatar",
     comment: "",
     indexes: []
   };
-  // const ImagenModel = sequelize.define("imagen_model", attributes, options);
-  const Imagen = sequelize.define("imagen", attributes, options);
+  // const AvatarModel = sequelize.define("avatar_model", attributes, options);
+  const Avatar = sequelize.define("avatar", attributes, options);
 
-  Imagen.associate = function(models){
-    Imagen.belongsTo(models.producto, {
-      foreignKey: "idimagen",
-      as: "producto"       
+  Avatar.associate = function(models){
+    Avatar.belongsTo(models.usuario, {
+      foreignKey: "idavatar",
+      as: "usuario"       
    })
   }
 
-  return Imagen;
+
+  return Avatar;
 };

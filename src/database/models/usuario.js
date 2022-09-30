@@ -50,7 +50,7 @@ module.exports = sequelize => {
       field: "password"
     },
     telefono: {
-      type: DataTypes.STRING(100),
+      type: DataTypes.INTEGER(11),
       allowNull: true,
       defaultValue: null,
       primaryKey: false,
@@ -110,6 +110,7 @@ module.exports = sequelize => {
   };
   const options = {
     tableName: "usuario",
+    timestamps: false,
     comment: "",
     indexes: [{
       name: "fk_avatar_usuario",
@@ -118,6 +119,15 @@ module.exports = sequelize => {
       fields: ["idavatar"]
     }]
   };
-  const UsuarioModel = sequelize.define("usuario_model", attributes, options);
-  return UsuarioModel;
+  // const UsuarioModel = sequelize.define("usuario_model", attributes, options);
+  const Usuario = sequelize.define("usuario", attributes, options);
+
+  Usuario.associate = function(models){
+    Usuario.hasOne(models.usuario, {
+      foreignKey: "idavatar",
+      as: "usuario"       
+   })
+  }
+
+  return Usuario;
 };

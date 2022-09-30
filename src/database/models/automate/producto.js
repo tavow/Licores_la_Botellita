@@ -3,6 +3,7 @@ const {
 } = require('sequelize');
 
 module.exports = sequelize => {
+  const alias = 'producto';
   const attributes = {
     idproducto: {
       type: DataTypes.INTEGER(11),
@@ -23,7 +24,7 @@ module.exports = sequelize => {
       field: "nombre"
     },
     descripcion: {
-      type: DataTypes.STRING(400),
+      type: DataTypes.STRING(350),
       allowNull: true,
       defaultValue: null,
       primaryKey: false,

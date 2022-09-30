@@ -13,21 +13,31 @@ module.exports = sequelize => {
       comment: null,
       field: "idavatar"
     },
-    nombre: {
+    nombreavatar: {
       type: DataTypes.STRING(100),
       allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
       comment: null,
-      field: "nombre"
+      field: "nombreavatar"
     }
   };
   const options = {
     tableName: "avatar",
+    timestamps: false,
     comment: "",
     indexes: []
   };
-  const AvatarModel = sequelize.define("avatar_model", attributes, options);
-  return AvatarModel;
+  // const AvatarModel = sequelize.define("avatar_model", attributes, options);
+  const Avatar = sequelize.define("avatar", attributes, options);
+
+  Avatar.associate = function(models){
+    Avatar.belongsTo(models.usuario, {
+      foreignKey: "idavatar",
+      as: "usuario"       
+   })
+  }
+
+  return Avatar;
 };
