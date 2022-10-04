@@ -13,19 +13,18 @@ module.exports = sequelize => {
       comment: null,
       field: "idavatar"
     },
-    nombreavatar: {
+    nombre: {
       type: DataTypes.STRING(100),
       allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
       comment: null,
-      field: "nombreavatar"
+      field: "nombre"
     }
   };
   const options = {
     tableName: "avatar",
-    timestamps: false,
     comment: "",
     indexes: []
   };
@@ -38,6 +37,7 @@ module.exports = sequelize => {
       as: "usuario"       
    })
   }
+
 
   return Avatar;
 };

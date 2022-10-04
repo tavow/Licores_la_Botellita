@@ -3,7 +3,6 @@ const {
 } = require('sequelize');
 
 module.exports = sequelize => {
-  const alias = 'producto';
   const attributes = {
     idproducto: {
       type: DataTypes.INTEGER(11),
@@ -24,7 +23,7 @@ module.exports = sequelize => {
       field: "nombre"
     },
     descripcion: {
-      type: DataTypes.STRING(350),
+      type: DataTypes.STRING(400),
       allowNull: true,
       defaultValue: null,
       primaryKey: false,
@@ -87,7 +86,7 @@ module.exports = sequelize => {
       field: "idimagen",
       references: {
         key: "idimagen",
-        model: "imagen_model"
+        model: "imagen"
       }
     },
     datatimeproducto: {
@@ -122,6 +121,7 @@ module.exports = sequelize => {
   Producto.associate = function(models){
     Producto.hasOne(models.imagen, {
       foreignKey: "idimagen",
+      otherKey: 'idimagen',
       as: "imagen"       
    });
 }

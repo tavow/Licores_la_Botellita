@@ -1,14 +1,13 @@
 const fs = require('fs');
 const path = require("path");
-const productsFilePath = path.join(__dirname, '../database/productosDB.json');
-const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
-
+// const productsFilePath = path.join(__dirname, '../database/productosDB.json');
+// const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
+const { validationResult } = require('express-validator');
 const db = require("../database/models");
 const { Sequelize } = require("sequelize");
 const Op = Sequelize.Op;
 
 const Productos = db.producto;
-const Imagen = db.imagen;
 
 const controladorProductos = {
   leer: (req, res) => {
@@ -45,8 +44,15 @@ const controladorProductos = {
   },
   edit: (req, res) => {
     let id = req.params.id
-    let productToEdit = products.find(producto => producto.id == id)
-    res.render('product-edit-form', { productToEdit })
+    console.log("id:" + id);
+    // let productToEdit = products.find(producto => producto.id == id)
+    Productos.findByPk(id)
+      .then(function (producto) {
+        console.log("Nos vamos a editar el producto")
+        res.render("product-edit-form", { productToEdit: producto })
+      })
+
+    // res.render('product-edit-form', { productToEdit })
   },
   vino: (req, res) => {
     // let categoria = 'vino';
@@ -87,118 +93,205 @@ const controladorProductos = {
     // res.send('Listado de ron');
 
     var producto = Productos.findAll({
-      include: {
-        model: Imagen,
-        as: 'imagen',
-      },
+      // include: {
+      //   model: Imagen,
+      //   as: 'imagen'
+      // where: {
+      //   idimagen: Sequelize.col('producto.idimagen')
+      //   // }
+      // },
       where: {
         categoria: {
           [Op.eq]: 'ron'
         }
       }
     })
-    .then(producto => {
-      console.log(producto);
-      res.render("productos2_listar", { producto: producto });
-    });
+      .then(producto => {
+        console.log(producto);
+        res.render("productos2_listar", { producto: producto });
+      });
   },
   whisky: (req, res) => {
-    let categoria = 'whisky';
-    let producto = [];
-    for (let i = 0; i < products.length; i++) {
-      if (products[i].categoria == categoria) {
-        producto = producto.concat(products[i]);
+    // let categoria = 'whisky';
+    // let producto = [];
+    // for (let i = 0; i < products.length; i++) {
+    //   if (products[i].categoria == categoria) {
+    //     producto = producto.concat(products[i]);
+    //   }
+    // }
+    // console.log(producto);
+    // res.render("productos2", { producto: producto });
+    // res.send('Listado de whisky');
+
+    var producto = Productos.findAll({
+      where: {
+        categoria: {
+          [Op.eq]: 'whisky'
+        }
       }
-    }
-    console.log(producto);
-    res.render("productos2", { producto: producto });
-    res.send('Listado de whisky');
+    })
+      .then(producto => {
+        console.log(producto);
+        res.render("productos2_listar", { producto: producto });
+      });
+
   },
   tequila: (req, res) => {
     let categoria = 'tequila';
-    console.log('categoria');
-    let producto = [];
-    for (let i = 0; i < products.length; i++) {
-      if (products[i].categoria == categoria) {
-        producto = producto.concat(products[i]);
+    // console.log('categoria');
+    // let producto = [];
+    // for (let i = 0; i < products.length; i++) {
+    //   if (products[i].categoria == categoria) {
+    //     producto = producto.concat(products[i]);
+    //   }
+    // }
+    // console.log(producto);
+    // res.render("productos2", { producto: producto });
+    // res.send('Listado de tequila');
+    var producto = Productos.findAll({
+      where: {
+        categoria: {
+          [Op.eq]: categoria
+        }
       }
-    }
-    console.log(producto);
-    res.render("productos2", { producto: producto });
-    res.send('Listado de tequila');
+    })
+      .then(producto => {
+        console.log(producto);
+        res.render("productos2_listar", { producto: producto });
+      });
   },
   coctel: (req, res) => {
     let categoria = 'coctel';
-    let producto = [];
-    for (let i = 0; i < products.length; i++) {
-      if (products[i].categoria == categoria) {
-        producto = producto.concat(products[i]);
+    // let producto = [];
+    // for (let i = 0; i < products.length; i++) {
+    //   if (products[i].categoria == categoria) {
+    //     producto = producto.concat(products[i]);
+    //   }
+    // }
+    // console.log(producto);
+    // res.render("productos2", { producto: producto });
+    // res.send('Listado de coctel');
+    var producto = Productos.findAll({
+      where: {
+        categoria: {
+          [Op.eq]: categoria
+        }
       }
-    }
-    console.log(producto);
-    res.render("productos2", { producto: producto });
-    res.send('Listado de coctel');
+    })
+      .then(producto => {
+        console.log(producto);
+        res.render("productos2_listar", { producto: producto });
+      });
   },
   detalle: (req, res) => {
     //res.send("Receta  " + req.params.idProducto);
     let id = req.params.idProducto;
-    let producto = products.find((producto) => producto.id == id);
-    let categoria = producto.categoria;
-    console.log(categoria);
-    //res.render(rederizar);
-    res.render("detalleproduct.ejs", { producto: producto });
+
+    // let producto = products.find((producto) => producto.id == id);
+    // let categoria = producto.categoria;
+    // console.log(categoria);
+
+    Productos.findByPk(id)
+      .then(function (producto) {
+        console.log("Nos vamos al detalle del producto")
+        res.render("detalleproduct.ejs", { producto: producto })
+
+      })
+
   },
   // Delete - Delete one product from DB
   destroy: (req, res) => {
-    let id = req.params.id;
-    let finalProducts = products.filter(producto => producto.id != id);
-    fs.writeFileSync(productsFilePath, JSON.stringify(finalProducts, null, ' '));
-    res.redirect('/productos');
-  },
-  store: (req, res) => {
-    let img
-    console.log(req.files);
-    if (req.files[0] != undefined) {
-      img = req.files[0].filename
-    } else {
-      img = 'default-image.png'
-    }
-    let newProduct = {
-      id: products[products.length - 1].id + 1,
-      ...req.body,
-      img: img
-    };
-    products.push(newProduct)
-    fs.writeFileSync(productsFilePath, JSON.stringify(products, null, ' '));
-    res.redirect('/');
-  },
-  update: (req, res) => {
-    let id = req.params.id;
-    let productToEdit = products.find(product => product.id == id)
-    let img
-
-    if (req.files[0] != undefined) {
-      img = req.files[0].filename
-    } else {
-      img = productToEdit.img
-    }
-
-    productToEdit = {
-      id: productToEdit.id,
-      ...req.body,
-      img: img,
-    };
-
-    let newProducts = products.map(product => {
-      if (product.id == productToEdit.id) {
-        return product = { ...productToEdit };
+    console.log("Borrando un producto")
+    // let id = req.params.id;
+    // let finalProducts = products.filter(producto => producto.id != id);
+    Productos.destroy({
+      where: {
+        idproducto: req.params.id
       }
-      return product;
     })
 
-    fs.writeFileSync(productsFilePath, JSON.stringify(newProducts, null, ' '));
-    // res.redirect('/');
-    res.render("product-response");
-  }
+    res.redirect('/products')
+  },
+
+  store: (req, res) => {
+    let img
+console.log(req.files);
+console.log("Creando el producto")
+if (req.files[0] != undefined) {
+  img = req.files[0].filename
+} else {
+  img = 'default-image.png'
+}
+console.log(img);
+
+const resultValidation = validationResult(req);
+if (resultValidation.errors.length > 0) {
+  return res.render('product-create-form',
+    {
+      errors: resultValidation.mapped(),
+      oldData: req.body
+    });
+}
+
+if (req.files) {
+  console.log("Create");
+  Productos.create({
+    nombre: req.body.nombre,
+    descripcion: req.body.descripcion,
+    precio: req.body.precio,
+    descuento: req.body.descuento,
+    categoria: req.body.categoria,
+    tamano: req.body.tamano,
+    tipo: req.body.tipo,
+    img: img,
+    datatimeproducto: datatimeproducto
+  }).then((product) => res.redirect('/products'))
+  res.render('index')
+} else {
+  res.render('index')
+}
+
+  },
+update: (req, res) => {
+  let id = req.params.id;
+  var products = Productos.findByPk(id)
+    .then(function (producto) {
+      console.log("Actualizando el producto")
+      // res.render("product-edit-form", { productToEdit: producto })
+    })
+
+  const resultValidation = validationResult(req);
+
+  Promise.any([products])
+    .then(function (products) {
+      if (resultValidation.errors.length > 0) {
+        return res.render('EditProduct',
+          {
+            errors: resultValidation.mapped(),
+            oldData: req.body,
+            products: products
+          });
+
+      } else {
+        Productos.update({
+          nombre: req.body.nombre,
+          descripcion: req.body.descripcion,
+          precio: req.body.precio,
+          descuento: req.body.descuento,
+          categoria: req.body.categoria,
+          tamano: req.body.tamano,
+          tipo: req.body.tipo,
+          img: req.body.img,
+          datatimeproducto: req.body.datatimeproducto
+        },
+          {
+            where: {
+              idproducto: req.params.id
+            }
+          }).then((product) => res.redirect('/products'))
+      }
+    })
+
+}
 };
 module.exports = controladorProductos;

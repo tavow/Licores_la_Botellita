@@ -13,14 +13,14 @@ module.exports = sequelize => {
       comment: null,
       field: "idimagen"
     },
-    nombre: {
+    nombreimagen: {
       type: DataTypes.STRING(100),
       allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
       comment: null,
-      field: "nombre"
+      field: "nombreimagen"
     }
   };
   const options = {

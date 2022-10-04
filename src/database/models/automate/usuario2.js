@@ -50,7 +50,7 @@ module.exports = sequelize => {
       field: "password"
     },
     telefono: {
-      type: DataTypes.INTEGER(11),
+      type: DataTypes.STRING(100),
       allowNull: true,
       defaultValue: null,
       primaryKey: false,
@@ -85,14 +85,18 @@ module.exports = sequelize => {
       comment: null,
       field: "categoria"
     },
-    img: {
-      type: DataTypes.STRING(100),
-      allowNull: true,
+    idavatar: {
+      type: DataTypes.INTEGER(11),
+      allowNull: false,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
       comment: null,
-      field: "img"
+      field: "idavatar",
+      references: {
+        key: "idavatar",
+        model: "avatar_model"
+      }
     },
     datatimeusuario: {
       type: DataTypes.DATE,
@@ -106,15 +110,23 @@ module.exports = sequelize => {
   };
   const options = {
     tableName: "usuario",
-    timestamps: false,
     comment: "",
     indexes: [{
-      name: "idusuario_idx",
+      name: "fk_avatar_usuario",
       unique: false,
       type: "BTREE",
-      fields: ["idusuario"]
+      fields: ["idavatar"]
     }]
   };
+  // const UsuarioModel = sequelize.define("usuario_model", attributes, options);
   const Usuario = sequelize.define("usuario", attributes, options);
+
+  Usuario.associate = function(models){
+    Usuario.hasOne(models.usuario, {
+      foreignKey: "idavatar",
+      as: "usuario"       
+   })
+  }
+
   return Usuario;
 };

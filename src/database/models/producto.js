@@ -9,7 +9,7 @@ module.exports = sequelize => {
       allowNull: false,
       defaultValue: null,
       primaryKey: true,
-      autoIncrement: false,
+      autoIncrement: true,
       comment: null,
       field: "idproducto"
     },
@@ -76,18 +76,14 @@ module.exports = sequelize => {
       comment: null,
       field: "tipo"
     },
-    idimagen: {
-      type: DataTypes.INTEGER(11),
-      allowNull: false,
+    img: {
+      type: DataTypes.STRING(100),
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
       comment: null,
-      field: "idimagen",
-      references: {
-        key: "idimagen",
-        model: "imagen_model"
-      }
+      field: "img"
     },
     datatimeproducto: {
       type: DataTypes.DATE,
@@ -104,26 +100,12 @@ module.exports = sequelize => {
     timestamps: false,
     comment: "",
     indexes: [{
-      name: "fk_imagen_producto",
-      unique: false,
-      type: "BTREE",
-      fields: ["idimagen"]
-    }, {
       name: "idproducto_idx",
       unique: false,
       type: "BTREE",
       fields: ["idproducto"]
     }]
   };
-  // const ProductoModel = sequelize.define("producto_model", attributes, options);
   const Producto = sequelize.define("producto", attributes, options);
-
-  Producto.associate = function(models){
-    Producto.hasOne(models.imagen, {
-      foreignKey: "idimagen",
-      as: "imagen"       
-   });
-}
-
-  return Producto ;
+  return Producto;
 };
