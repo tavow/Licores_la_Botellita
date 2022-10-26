@@ -1,60 +1,92 @@
-<!DOCTYPE html>
+<!doctype html>
+<html lang="es">
+
 <head>
-<%- include('./partials/head', { title: "Registrar Usuario nuevo" }) %>
-<link rel="stylesheet" href="/css/form2.css">
+    <%- include('./partials/head', { title: "Registrar Usuario nuevo" }) %>
+        <link rel="stylesheet" href="/css/form2.css">
 </head>
 
-  <body>
+<body>
     <header>
-      <%- include('./partials/header') %>
+        <%- include('./partials/header') %>
     </header>
+    <div class="container-fluid">
 
-    <!-- <main> -->
-      <div class="container">  
-        <form id="contact" action="/user/register" method="POST" class="form" id="form1">
-          <h3>Formulario de Registro</h3>
-          <h4>Contact us today, and get reply with in 24 hours!</h4>
-          <fieldset>
-            <input placeholder="Nombre" type="text" name="nombre" tabindex="1" required autofocus>
-          </fieldset>
-          <fieldset>
-            <input placeholder="Apellido" type="text" name="apellido" tabindex="1" required autofocus>
-          </fieldset>          
-          <fieldset>
-            <input placeholder="Correo" type="email" name="correo" tabindex="2" required>
-          </fieldset>
-          <fieldset>
-            <input placeholder="Password" type="password" name="password" tabindex="2" required>
-          </fieldset>
-          <fieldset>
-            <input placeholder="Repita Password" type="password" name="re_password" tabindex="2" required>
-          </fieldset>
-          <fieldset>
-            <input placeholder="Teléfono" type="tel"  name="telefono" tabindex="3" required>
-          </fieldset>
-          <fieldset>
-            <input placeholder="Ciudad" type="text" name="ciudad" tabindex="4" required>
-          </fieldset>
-          <!-- <fieldset><div class="file-select" id="img" >
-            <input type="file" tabindex="5" name="img" aria-label="Archivo"> </div>
-          </fieldset> -->
-          <fieldset><div class="file-select" id="img" >
-            <input type="file" value="Adjuntar documento" name="img" id="img">
-          </fieldset>
-          <fieldset>
-            <!-- <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button> -->
-            <button type="submit" class="cart-btn">Submit</button><br>
-          </fieldset>
+        <!-- Cuerpo principal -->
 
-        </form>      
-        
-      </div>
+        <section class="bg-home pt-4">
+            <div class="container">
+                <div class="row">
+                    <div class="col-8 mx-auto bg-light ">
+                        <!--Aquí muestro los errores del lado del Js-Front -->
 
-    <!-- </main> -->
+                        <!-- Aquí muestro los errores --->
+                        <% if(typeof(errors) !='undefined' ){%>
+                            <ul class="alert alert-danger">
+                                <% errors.forEach(error=> { %>
+                                    <li>
+                                        <%= error.msg%>
+                                    </li>
+                                    <%});%>
+                            </ul>
+                            <%}%>
+                                <!----Fin mostrar errores--------->
+                                <div class="signup-form">
+                                    <form action="/registro" method="post" enctype="multipart/form-data"
+                                        class="formulario" id="contact">
+                                        <h3>Registro</h3>
+                                        <h4>Introduzca sus datos</h4>
+                                        <br>
+                                        <div>
+                                          <ul id="errores"> </ul>
+                                        </div>
+                                        <fieldset>
+                                            <input placeholder="Nombre" type="text" name="nombre" tabindex="1"
+                                                value="<%= typeof old != 'undefined' ? old.nombre : '' %>">
+                                        </fieldset>
+                                        <fieldset>
+                                            <input placeholder="Apellido" type="text" name="apellido" tabindex="1"
+                                                value="<%= typeof old != 'undefined' ? old.apellido : '' %>">
+                                        </fieldset>
+                                        <fieldset class="form-group">
+                                            <input type="email" tabindex="2" name="email" placeholder="Email"
+                                                value="<%= typeof old != 'undefined' ? old.email : '' %>">
+                                        </fieldset>
+                                        <fieldset class="form-group">
+                                            <input type="password" tabindex="3" name="password"
+                                                placeholder="Contraseña">
+                                        </fieldset>
+                                        <fieldset>
+                                            <input placeholder="Confirme Contraseña" type="password" name="re_password"
+                                                tabindex="3">
+                                        </fieldset>
+                                        <fieldset>
+                                            <input placeholder="Teléfono" type="tel" name="telefono" tabindex="3">
+                                        </fieldset>
+                                        <fieldset>
+                                            <input placeholder="Ciudad" type="text" name="ciudad" tabindex="4">
+                                        </fieldset>
+                                        <fieldset><div class="file-select" id="img" >
+                                            <input type="file" value="Adjuntar documento" name="img" id="img" placeholder="Debes eligir tu avatar...">
+                                          </fieldset>
 
+                                        <div class="form-group">
+                                            <button type="submit" class="btn btn btn-info">Registrarme</button>
+                                        </div>
+                                    </form>
+                                    <div class="text-center my-3">Ya tengo una cuenta? <a href="/login">Inicia
+                                            sesión</a></div>
+                                </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+    </section>
     <footer>
-      <%- include('./partials/footer') %>
+        <%- include('./partials/footer') %>
     </footer>
 
-  </body>
+    <script src="/js/registro.js"></script>
+</body>
+
 </html>

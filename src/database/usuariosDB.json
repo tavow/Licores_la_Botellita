@@ -198,5 +198,16 @@
   "ciudad": "Medellin",
   "categoria": "false",
   "img": "descarga.jfif"
+ },
+ {
+  "id": 19,
+  "nombre": "",
+  "apellido": "",
+  "email": "",
+  "password": "$2a$10$h8xTQSwHLeIgLmmSjAZBfuNwpn6HTVdj7Kx6ERzBnBNHlyiscPkXW",
+  "re_password": "$2a$10$QCJkI3MSgzkV0pgPrFdlj.PE447JBr/myHSCrvh2VQR.yWzq/dCz6",
+  "telefono": "",
+  "ciudad": "",
+  "img": ""
  }
 ]

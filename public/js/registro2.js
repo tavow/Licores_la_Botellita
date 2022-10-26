@@ -16,9 +16,9 @@ window.addEventListener('load', function () {
             console.log(formulario.elements.re_password.value);
             //Validar Nombre
             if (nombre.value == '') {
-                errores.push('El campo Nombre no puede estar vacio...');
+                errores.push('El campo nombre no puede estar vacio...');
                 nombre.classList.add('is-invalid');
-                //errores['nombre'] = 'El campo nombre no puede estar vacio... ';
+                //errores['nombre'] = 'El campo nombre no puede estar vacio...';
             } else {
                 nombre.classList.add('is-valid');
                 nombre.classList.remove('is-invalid');
@@ -26,7 +26,7 @@ window.addEventListener('load', function () {
 
             //Validar Apellido
             if (apellido.value == '') {
-                errores.push('El campo Apellido no puede estar vacio...');
+                errores.push('El campo apellido no puede estar vacio...');
                 apellido.classList.add('is-invalid');
                 //errores['apellido'] = 'El campo nombre no puede estar vacio...';
             } else {
@@ -39,7 +39,7 @@ window.addEventListener('load', function () {
             if (!reEmail.test(email.value)) {
                 errores.push('El email es inválido...');
                 email.classList.add('is-invalid');
-                //errores['last_name'] = 'El campo nombre no puede estar vacio...';
+                //errores['email'] = 'El campo nombre no puede estar vacio...';
             } else {
                 email.classList.add('is-valid');
                 email.classList.remove('is-invalid');
@@ -50,7 +50,7 @@ window.addEventListener('load', function () {
             if (!rePassword.test(password.value)) {
                 errores.push('La contraseña como mínimo debe tener seis caracteres, al menos una letra y un número');
                 password.classList.add('is-invalid');
-                //errores['last_name'] = 'El campo nombre no puede estar vacio...';
+                //errores['password'] = 'El campo nombre no puede estar vacio...';
             } else {
                 password.classList.add('is-valid');
                 password.classList.remove('is-invalid');
@@ -71,30 +71,11 @@ window.addEventListener('load', function () {
                     re_password.classList.remove('is-invalid');
                 }
             }
-            //Validar Telefono
-            if (telefono.value == '') {
-                errores.push('El campo Telefono no puede estar vacio...');
-                telefono.classList.add('is-invalid');
-                //errores['telefono'] = 'El campo nombre no puede estar vacio... ';
-            } else {
-                telefono.classList.add('is-valid');
-                telefono.classList.remove('is-invalid');
-            }
-
-            //Validar ciudad
-            if (ciudad.value == '') {
-                errores.push('El campo Ciudad no puede estar vacio...');
-                ciudad.classList.add('is-invalid');
-                //errores['ciudad'] = 'El campo nombre no puede estar vacio... ';
-            } else {
-                ciudad.classList.add('is-valid');
-                ciudad.classList.remove('is-invalid');
-            }
-            //Aquí valido que el usuario coloque su img (Yo en mi caso lo considero como un dato obligatorio, ustedes si quieren lo validan como deseen)
+            //Aquí valido que el usuario coloque su avatar (Yo en mi caso lo considero como un dato obligatorio, ustedes si quieren lo validan como deseen)
             if (img.value == '') {
-                errores.push('Debe seleccionar su Avatar en formato JPG - JPEG- PNG ó GIF');
+                errores.push('Debe seleccionar su avatar en formato JPG - PNG ó JPEG');
                 img.classList.add('is-invalid');
-                //errores['last_name'] = 'El campo nombre no puede estar vacio...';
+                //errores['img'] = 'El campo nombre no puede estar vacio...';
             } else {
                 img.classList.add('is-valid');
                 img.classList.remove('is-invalid');
