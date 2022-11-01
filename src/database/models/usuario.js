@@ -6,102 +6,38 @@ module.exports = sequelize => {
   const attributes = {
     idusuario: {
       type: DataTypes.INTEGER(11),
-      allowNull: false,
-      defaultValue: null,
       primaryKey: true,
-      autoIncrement: false,
-      comment: null,
-      field: "idusuario"
+      autoIncrement: true
     },
     nombre: {
-      type: DataTypes.STRING(100),
-      allowNull: true,
-      defaultValue: null,
-      primaryKey: false,
-      autoIncrement: false,
-      comment: null,
-      field: "nombre"
+      type: DataTypes.STRING(100)
     },
     apellido: {
-      type: DataTypes.STRING(100),
-      allowNull: true,
-      defaultValue: null,
-      primaryKey: false,
-      autoIncrement: false,
-      comment: null,
-      field: "apellido"
+      type: DataTypes.STRING(100)
     },
     correo: {
-      type: DataTypes.STRING(100),
-      allowNull: true,
-      defaultValue: null,
-      primaryKey: false,
-      autoIncrement: false,
-      comment: null,
-      field: "correo"
+      type: DataTypes.STRING(100)
     },
     password: {
-      type: DataTypes.STRING(100),
-      allowNull: true,
-      defaultValue: null,
-      primaryKey: false,
-      autoIncrement: false,
-      comment: null,
-      field: "password"
+      type: DataTypes.STRING(100)
     },
     telefono: {
-      type: DataTypes.INTEGER(11),
-      allowNull: true,
-      defaultValue: null,
-      primaryKey: false,
-      autoIncrement: false,
-      comment: null,
-      field: "telefono"
+      type: DataTypes.INTEGER(11)
     },
     direccion: {
-      type: DataTypes.STRING(255),
-      allowNull: true,
-      defaultValue: null,
-      primaryKey: false,
-      autoIncrement: false,
-      comment: null,
-      field: "direccion"
+      type: DataTypes.STRING(255)
     },
     ciudad: {
-      type: DataTypes.STRING(100),
-      allowNull: true,
-      defaultValue: null,
-      primaryKey: false,
-      autoIncrement: false,
-      comment: null,
-      field: "ciudad"
+      type: DataTypes.STRING(100)
     },
     categoria: {
-      type: DataTypes.INTEGER(4),
-      allowNull: true,
-      defaultValue: null,
-      primaryKey: false,
-      autoIncrement: false,
-      comment: null,
-      field: "categoria"
+      type: DataTypes.INTEGER(4)
     },
     img: {
-      type: DataTypes.STRING(100),
-      allowNull: true,
-      defaultValue: null,
-      primaryKey: false,
-      autoIncrement: false,
-      comment: null,
-      field: "img"
+      type: DataTypes.STRING(100)
     },
     datatimeusuario: {
-      type: DataTypes.DATE,
-      allowNull: true,
-      defaultValue: null,
-      primaryKey: false,
-      autoIncrement: false,
-      comment: null,
-      field: "datatimeusuario"
+      type: DataTypes.DATE
     }
   };
   const options = {

@@ -22,7 +22,7 @@
                   
                     <div class="signup-form">
 
-                        <form action="/ingresar" method="post" class="formulario" id="contact">
+                        <form action="/user/login" method="post" class="formulario" id="contact">
                           <h3>Login</h3>
                           <h4>Introduzca su correo y contraseña</h4>
                           <br>
@@ -30,7 +30,7 @@
                             <ul id="errores"> </ul>
                           </div>
                             <fieldset>
-                                <input type="email" name="email" placeholder="Correo" value="" tabindex="2">
+                                <input type="email" name="correo" placeholder="Correo" value="" tabindex="2">
                                 <% if(typeof(errors) != 'undefined'){%>
                                   <span class="text-danger">
                                     <%= errors[0].msg %>
@@ -60,7 +60,7 @@
                             <button type="submit" class="cart-btn">Submit</button><br>
                           </fieldset>
                         </form>
-                        <div class="text-center mb-3"><a href="register">Aun no poseo una cuenta</a></div>
+                        <div class="text-center mb-3"><a href="register">¿No tiene una cuenta? Regístrese</a></div>
                     </div>
                 </div>                        
             </div>

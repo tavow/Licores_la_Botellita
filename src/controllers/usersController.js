@@ -2,12 +2,14 @@ const fs = require("fs");
 const path = require("path");
 const { validationResult } = require("express-validator");
 const bcryptjs = require("bcryptjs");
-const UsersFilePath = path.join(__dirname, '../database/usuariosDB.json');
-const users = JSON.parse(fs.readFileSync(UsersFilePath, 'utf-8'));
+// const UsersFilePath = path.join(__dirname, '../database/usuariosDB.json');
+// const users = JSON.parse(fs.readFileSync(UsersFilePath, 'utf-8'));
 
-// const db = require("../database/models");
-// const { Sequelize } = require("sequelize");
-//  const Op = Sequelize.Op;
+const db = require("../database/models");
+const { Sequelize } = require("sequelize");
+const Op = Sequelize.Op;
+
+const users = db.usuario;
 
 const usersController = {
   register: (req, res) => {
@@ -16,31 +18,29 @@ const usersController = {
   processRegister: async (req, res) => {
     console.log('process register');
     const validations = validationResult(req);
+    let errors = validationResult(req);
     console.log("length" + validations.errors);
-    // if (validations.errors.length > 0) {
-    //   return res.render("register", {
-    //     errors: validations.mapped(),
-    //     old: req.body,
-    //   });
-    // }
-    // let producto = products.find(producto => producto.id == id);
-    let usuario = users.find(item => item.correo == req.body.correo);
-    let userInDB = users.find(user =>  user.correo == req.body.correo);
-    // let userInDB = await db.user.findAll({
-    //   where: {
-    //     email: req.body.email,
-    //   },
-    // });
-    console.log(req.body.correo);
-    console.log(usuario);
+    if (!errors.isEmpty()) {
+      return res.render(("register"), {
+        errors: errors.errors, old: req.body
+      });
+    }
     let email = req.body.correo;
-    console.log('users.userInDB: ');
-    console.log('Resultado busqueda email en json');
+    let datatimeusuario = "1999-06-06";
 
-    if (userInDB !== undefined) {
+    console.log(req.body.correo);
+    let userInDB = await db.usuario.findAll({
+      where: {
+        correo: req.body.correo,
+      },
+    });
+
+    console.log(userInDB);
+
+    if (userInDB == []) {
       return res.render("register", {
         errors: {
-          email: {
+          error: {
             msg: "Este email ya se encuentra registrado",
           },
         },
@@ -48,11 +48,11 @@ const usersController = {
       });
       console.log('Este email ya se encuentra registrado');
     }
-
+    console.log('Validando contraseñas');
     if (req.body.password !== req.body.re_password) {
       return res.render("register", {
         errors: {
-          re_password: {
+          error: {
             msg: "Las contraseñas no coinciden",
           },
         },
@@ -60,23 +60,28 @@ const usersController = {
       });
     }
     console.log(req.files);
-		if(req.body.img != undefined){
-			img = req.body.img
-		} else {
-			img = 'default-foto.png'
-		}
+
     console.log('Listos para crear al usuario');
-    let userToCreate = {
-        id: users[users.length - 1].id + 1,
-        ...req.body,
-              password: bcryptjs.hashSync(req.body.password, 10),
-              re_password: bcryptjs.hashSync(req.body.password, 10),
-        img: img
-      };
-      users.push(userToCreate)
-      fs.writeFileSync(UsersFilePath, JSON.stringify(users, null, ' '));
-      res.redirect('/user/register');
-      
+
+    let user = {
+      nombre: req.body.nombre,
+      apellido: req.body.apellido,
+      correo: req.body.correo,
+      password: bcryptjs.hashSync(req.body.password, 10),
+      telefono: Number(req.body.telefono),
+      direccion: req.body.direccion,
+      ciudad: req.body.ciudad,
+      categoria: req.body.categoria,
+      img: req.file ? req.file.filename : "default-foto.png",
+      datatimeusuario: datatimeusuario
+    };
+
+    users.create(user)
+      .then((storedUser) => { res.render('login') })
+      .catch(error => res.render(path.join(__dirname, '../views/register.ejs'), {
+        errors: errors.mapped(),
+        old: req.body
+      }));
   },
 
   login: (req, res) => {
@@ -88,38 +93,23 @@ const usersController = {
     console.log('Process Login');
     console.log(req.body.password);
     console.log(req.body.correo);
-    let usuario = users.find(item => item.correo == req.body.correo);
+    let usuario = await users.findOne({
+      where: { correo: req.body.correo }
+    })
     console.log(usuario);
 
-    // if (resultValidation.errors.length > 0) {
-    //   console.log(resultValidation.errors.length);
-    //   return res.render("login", {
-    //     errors: resultValidation.mapped(),
-    //     old: req.body,
-    //   });
-    // }
-
-    // let userToLogin = await db.user.findOne({
-    //   where: {
-    //     email: req.body.email,
-    //   }
-    // });
-
     if (usuario) {
-      // let passwordOk = false; 
-      let passwordOk = bcryptjs.compareSync(
-        req.body.password,
-        usuario.password
-      );
-      // if (req.body.password == usuario.password) {
-      //   console.log('Todo bien'); 
-      //   passwordOk = true; 
-      // };
+      console.log("______________________________222");
+      let passwordOk = bcryptjs.compareSync(req.body.password, usuario.password);
+
+      // bcryptjs.compareSync(        req.body.password,        usuario.password      );
+
       console.log('passsword: ' + passwordOk);
+
       if (passwordOk) {
         // delete usuario.password;
         req.session.userLogged = usuario;
-        console.log('remember_user: ',req.body.remember_user);
+        console.log('remember_user: ', req.body.remember_user);
         console.log(usuario);
         if (req.body.remember_user) {
           res.cookie("userEmail", req.body.correo, { maxAge: 1000 * 60 * 5 });
@@ -128,22 +118,23 @@ const usersController = {
         // if (usuario.category_id === 1) {
         //   return res.redirect("/admin/");
         // }
-        return res.render("profile",{usuario});
-      }
-      console.log('Usuario o contraseña incorrecta');
-      return res.render("login", {
-        errors: {
-          generico: {
-            msg: "Usuario o contraseña incorrecta",         
+        return res.render("profile", { usuario });
+      } else {
+        console.log('Usuario o contraseña incorrecta');
+        return res.render("login", {
+          errors: {
+            error: {
+              msg: "Usuario o contraseña incorrecta",
+            },
           },
-        },
-      });
+        });
+      }
     }
 
     return res.render("login", {
       errors: {
-        email: {
-          msg: "Este mail no se encuentra registrado",
+        error: {
+          msg: "Este email no se encuentra registrado",
         },
       },
     });
@@ -166,7 +157,7 @@ const usersController = {
         avatar: req.file ? req.file.filename : "avatar1.jpg"
       },
       {
-        where: { 
+        where: {
           email: req.body.email
         },
       }

@@ -1,7 +1,7 @@
 window.addEventListener('load', function () {
     //Capturar el formulario 
     let formulario = document.querySelector('.formulario');
-    //console.log(formulario.elements.email.value);
+    //console.log(formulario.elements.correo.value);
     formulario.addEventListener('submit', function (evento) {
         if (!validaciones(evento)) {
             evento.preventDefault();
@@ -11,7 +11,7 @@ window.addEventListener('load', function () {
 
         function validaciones(evento) {
             //Destructuring  
-            let { nombre, apellido, email, password, re_password, telefono, ciudad, img } = formulario.elements;
+            let { nombre, apellido, correo, password, re_password, telefono, direccion, ciudad, img } = formulario.elements;
             let errores = [];
             console.log(formulario.elements.re_password.value);
             //Validar Nombre
@@ -36,13 +36,13 @@ window.addEventListener('load', function () {
             //Validar el email - Expresiones Regulares https://www.w3schools.com/jsref/jsref_obj_regexp.asp       https://stackoverflow.com/questions/46155/how-to-validate-an-email-address-in-javascript
             let reEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 
-            if (!reEmail.test(email.value)) {
+            if (!reEmail.test(correo.value)) {
                 errores.push('El email es inválido...');
-                email.classList.add('is-invalid');
-                //errores['last_name'] = 'El campo nombre no puede estar vacio...';
+                correo.classList.add('is-invalid');
+                //errores['correo'] = 'El campo nombre no puede estar vacio...';
             } else {
-                email.classList.add('is-valid');
-                email.classList.remove('is-invalid');
+                correo.classList.add('is-valid');
+                correo.classList.remove('is-invalid');
             }
             //Aquí valido el password haciendo uso de Expresiones Regulares
             //Esta expresión regular valida como Mínimo seis caracteres, al menos una letra y un número:
@@ -79,6 +79,16 @@ window.addEventListener('load', function () {
             } else {
                 telefono.classList.add('is-valid');
                 telefono.classList.remove('is-invalid');
+            }
+
+            //Validar direccion
+            if (direccion.value == '') {
+                errores.push('El campo Dirección no puede estar vacio...');
+                direccion.classList.add('is-invalid');
+                //errores['telefono'] = 'El campo nombre no puede estar vacio... ';
+            } else {
+                direccion.classList.add('is-valid');
+                direccion.classList.remove('is-invalid');
             }
 
             //Validar ciudad

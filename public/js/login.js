@@ -3,7 +3,7 @@ window.addEventListener('load',function(){
     //Capturar el formulario 
     let formulario = document.querySelector('.formulario');
     // let formulario = document.getElementById('formulario');
-    //console.log(formulario.elements.email.value);
+    //console.log(formulario.elements.correo.value);
     formulario.addEventListener('submit',function(evento){
         
         if(!validaciones(evento)){
@@ -15,19 +15,19 @@ window.addEventListener('load',function(){
         function validaciones(evento){
         
           //Destructuring  
-          let {email, password } = formulario.elements;
+          let {correo, password } = formulario.elements;
           let errores = [];
-          console.log(formulario.elements.email.value);
+          console.log(formulario.elements.correo.value);
         //Validar el email - Expresiones Regulares https://www.w3schools.com/jsref/jsref_obj_regexp.asp       https://stackoverflow.com/questions/46155/how-to-validate-an-email-address-in-javascript
         let reEmail  = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
    
-        if(!reEmail.test(email.value)){
-            errores.push('El email es inválido...');
-            email.classList.add('is-invalid');   
+        if(!reEmail.test(correo.value)){
+            errores.push('El Correo es inválido...');
+            correo.classList.add('is-invalid');   
             //errores['last_name'] = 'El campo nombre no puede estar vacio...';
         }else{
-            email.classList.add('is-valid');
-            email.classList.remove('is-invalid');
+            correo.classList.add('is-valid');
+            correo.classList.remove('is-invalid');
         }
         //Aquí valido el password haciendo uso de Expresiones Regulares
         //Esta expresión regular valida como Mínimo seis caracteres, al menos una letra y un número:
