@@ -37,7 +37,7 @@ window.addEventListener('load', function () {
             let reEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 
             if (!reEmail.test(correo.value)) {
-                errores.push('El email es inválido...');
+                errores.push('El Email es inválido...');
                 correo.classList.add('is-invalid');
                 //errores['correo'] = 'El campo nombre no puede estar vacio...';
             } else {
@@ -45,10 +45,14 @@ window.addEventListener('load', function () {
                 correo.classList.remove('is-invalid');
             }
             //Aquí valido el password haciendo uso de Expresiones Regulares
-            //Esta expresión regular valida como Mínimo seis caracteres, al menos una letra y un número:
-            let rePassword = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/
+            //Esta expresión regular valida como Mínimo seis caracteres, al menos una letra y un número:         
+            // let rePassword = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/
+
+            // Minimum eight characters, at least one letter, one number and one special character:
+            let rePassword =/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/
+
             if (!rePassword.test(password.value)) {
-                errores.push('La contraseña como mínimo debe tener seis caracteres, al menos una letra y un número');
+                errores.push('La contraseña como mínimo debe tener ocho caracteres, al menos una letra, un número y un caracter especial');
                 password.classList.add('is-invalid');
                 //errores['last_name'] = 'El campo nombre no puede estar vacio...';
             } else {
@@ -124,7 +128,6 @@ window.addEventListener('load', function () {
                 return true;
             }
         }
-
     })
 
 })

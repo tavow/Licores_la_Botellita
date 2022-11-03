@@ -21,7 +21,7 @@
                         <!--Aquí muestro los errores del lado del Js-Front -->
 
                         <!-- Aquí muestro los errores --->
-                        <% if(typeof(errors) != 'undefined' ){%>
+                        <% if(typeof(errors) !='undefined' ){%>
                             <ul class="alert alert-danger">
                                 <% errors.forEach(error=> { %>
                                     <li>
@@ -38,7 +38,7 @@
                                         <h4>Introduzca sus datos</h4>
                                         <br>
                                         <div>
-                                          <ul id="errores"> </ul>
+                                            <ul id="errores"> </ul>
                                         </div>
                                         <fieldset>
                                             <input placeholder="Nombre" type="text" name="nombre" tabindex="1"
@@ -69,10 +69,13 @@
                                         <fieldset>
                                             <input placeholder="Ciudad" type="text" name="ciudad" tabindex="4">
                                         </fieldset>
-                                        <fieldset><div class="file-select" id="img" >
-                                            <input type="file" value="Adjuntar documento" name="img" id="img" placeholder="Debes eligir tu avatar...">
-                                          </fieldset>
-                                          <input type="text" id="categoria" name="categoria"  tabindex="5" value="true" hidden><br>
+                                        <fieldset>
+                                            <div class="file-select" id="img">
+                                                <input type="file" value="Adjuntar documento" name="img" id="img"
+                                                    placeholder="Debes eligir tu avatar...">
+                                        </fieldset>
+                                        <input type="text" id="categoria" name="categoria" tabindex="5" value="true"
+                                            hidden><br>
                                         <div class="form-group">
                                             <button type="submit" class="btn btn btn-info">Registrarme</button>
                                         </div>
@@ -85,7 +88,7 @@
             </div>
     </div>
     </section>
-    <footer>
+    <footer class="footer-distributed">
         <%- include('./partials/footer') %>
     </footer>
 

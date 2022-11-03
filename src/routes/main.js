@@ -6,5 +6,6 @@ router.get('/', mainController.index);
 router.get('/servicios', mainController.servicio);
 router.get('/recetas', mainController.receta);
 router.get('/recetas/:idReceta', mainController.edit);
+router.get('/compras', mainController.compras);
 
 module.exports = router;

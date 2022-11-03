@@ -1,40 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Productos</title>
+    <%- include('partials/head', { title: "Productos" }) %>
 </head>
+
 <body>
     <header>
         <%- include('partials/header'); %>
-    </header> 
+    </header>
 
     <main class="main">
         <section class="last-visit">
             <div class="products">
-                <% producto.forEach(function(producto){  %>
-                <article>
-                <!-- <a href="/detalleproducto.html"> -->
-                <a href="/products/<%= producto.id %> ">
-                  <img src="../img/<%= producto.categoria %>/<%= producto.img %>" alt="<%= producto.categoria %>" class="product_img"> 
-                </a>
-                <div class="main-article">
-                    <i class="fa-solid fa-cart-plus"></i>
-                    <p class="price">$<%= producto.precio %></p>
-                   <h4 class="description"><%= producto.descripcion %></h4> <br>
-                   <h4 class="Tamañobotella"><%= producto.tamano %></h4> <br>
-                   <p class="descuento"><%= producto.descuento %></p>
-                </div>
-            </article>
-            <% }) %>
-         </section>
-     </main>
+                <% producto.forEach(function(producto){ %>
+                    <article>
+                        <!-- <a href="/detalleproducto.html"> -->
+                        <a href="/products/<%= producto.id %> ">
+                            <img src="../img/<%= producto.categoria %>/<%= producto.img %>"
+                                alt="<%= producto.categoria %>" class="product_img">
+                        </a>
+                        <div class="main-article">
+                            <i class="fa-solid fa-cart-plus"></i>
+                            <p class="price">$<%= producto.precio %>
+                            </p>
+                            <h4 class="description">
+                                <%= producto.descripcion %>
+                            </h4> <br>
+                            <h4 class="Tamañobotella">
+                                <%= producto.tamano %>
+                            </h4> <br>
+                            <p class="descuento">
+                                <%= producto.descuento %>
+                            </p>
+                        </div>
+                    </article>
+                    <% }) %>
+        </section>
+    </main>
 
-    <footer>
+    <footer class="footer-distributed">
         <%- include('partials/footer'); %>
     </footer>
-    
+
 </body>
+
 </html>

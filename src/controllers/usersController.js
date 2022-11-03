@@ -90,19 +90,18 @@ const usersController = {
 
   processLogin: async (req, res) => {
     const resultValidation = validationResult(req);
+    let errors = validationResult(req);
     console.log('Process Login');
     console.log(req.body.password);
     console.log(req.body.correo);
     let usuario = await users.findOne({
       where: { correo: req.body.correo }
     })
-    console.log(usuario);
+    // console.log(usuario);
 
     if (usuario) {
       console.log("______________________________222");
       let passwordOk = bcryptjs.compareSync(req.body.password, usuario.password);
-
-      // bcryptjs.compareSync(        req.body.password,        usuario.password      );
 
       console.log('passsword: ' + passwordOk);
 
@@ -121,13 +120,7 @@ const usersController = {
         return res.render("profile", { usuario });
       } else {
         console.log('Usuario o contraseña incorrecta');
-        return res.render("login", {
-          errors: {
-            error: {
-              msg: "Usuario o contraseña incorrecta",
-            },
-          },
-        });
+        return res.render("login", { errors: [{ msg: "Credenciales invalidas" }] });
       }
     }
 

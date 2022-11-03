@@ -1,34 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recetas</title>
+    <%- include('./partials/head', { title: "Recetas" }) %>
+        <link rel="stylesheet" href="/css/form2.css">
 </head>
+
 <body>
     <header>
         <%- include('partials/header'); %>
-    </header> 
+    </header>
 
     <h1> Listado de Recetas </h1>
     <br>
-    <div class="ingredient"> 
-           <ul>
-            <% listaRecetas.forEach(function(listaRecetas) { %>
-                <li>
-                    <a href="/recetas/<%= listaRecetas.id %>">
-                        <strong><%= listaRecetas.id %></strong>
-                        Receta <%= listaRecetas.titulo %>, - <%= listaRecetas.descripcion %>
-                    </a>
-                </li>
-            <% }); %>
-        </ul>
+    <div>
+        <div class="ingredient">
+            <ul>
+                <% listaRecetas.forEach(function(listaRecetas) { %>
+                    <li>
+                        <a href="/recetas/<%= listaRecetas.id %>">
+                            <strong>
+                                <%= listaRecetas.id %>
+                            </strong>
+                            Receta <%= listaRecetas.titulo %>, - <%= listaRecetas.descripcion %>
+                        </a>
+                    </li>
+                    <% }); %>
+            </ul>
+        </div>
     </div>
 
-    <footer>
+    <footer class="footer-distributed">
         <%- include('partials/footer'); %>
     </footer>
-    
+
 </body>
+
 </html>

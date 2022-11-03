@@ -1,55 +1,62 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <%- include('partials/head', { title: "Productos" }) %>
-  </head>
-  <body>
-    <header><%- include('partials/header'); %></header>
 
-    <!-- Service Section -->
-    <section id="services">
-      <div class="service-bottom">
-        <div class="service-item">
-          <div class="icon">
-            <img src="../img/vino/vinotintocastillo.png" />
-          </div>
-          <a href="/products/vinos">
-            <h2>Vinos</h2>
-          </a>
-        </div>
-        <div class="service-item">
-          <div class="icon">
-            <img src="../img/whisky/buchanansdeluxe.png" />
-          </div>
-          <a href="/products/whisky">
-            <h2>Whisky</h2>
-          </a>
-        </div>
-        <div class="service-item">
-          <div class="icon"><img src="../img/tequila/donjulio.png" /></div>
-          <a href="/products/tequila">
-            <h2>Tequila</h2>
-          </a>
-        </div>
+<head>
+  <%- include('partials/head', { title: "Productos" }) %>
+</head>
 
-        <div class="service-item">
-          <div class="icon"><img src="../img/ron/ron.jpg" /></div>
-          <a href="/products/ron">
-            <h2>Ron</h2>
-          </a>
-        </div>
+<body>
+  <header>
+    <%- include('partials/header'); %>
+  </header>
 
-        <div class="service-item">
-          <div class="icon"><img src="../img/ron/ron.jpg" /></div>
-          <a href="/products/coctel">
-            <h2>Coctelería</h2>
-          </a>
+  <!-- Service Section -->
+  <section id="services">
+    <div class="service-bottom">
+      <div class="service-item">
+        <div class="icon">
+          <img src="../img/vino/vinotintocastillo.png" />
         </div>
+        <a href="/products/vinos">
+          <h2>Vinos</h2>
+        </a>
       </div>
-    </section>
+      <div class="service-item">
+        <div class="icon">
+          <img src="../img/whisky/buchanansdeluxe.png" />
+        </div>
+        <a href="/products/whisky">
+          <h2>Whisky</h2>
+        </a>
+      </div>
+      <div class="service-item">
+        <div class="icon"><img src="../img/tequila/donjulio.png" /></div>
+        <a href="/products/tequila">
+          <h2>Tequila</h2>
+        </a>
+      </div>
 
-    <!-- End Service Section -->
+      <div class="service-item">
+        <div class="icon"><img src="../img/ron/ronviejodecaldas.png" /></div>
+        <a href="/products/ron">
+          <h2>Ron</h2>
+        </a>
+      </div>
 
-    <footer><%- include('partials/footer'); %></footer>
-  </body>
+      <div class="service-item">
+        <div class="icon"><img src="../img/coctel/cocktail.png" /></div>
+        <a href="/products/coctel">
+          <h2>Coctelería</h2>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- End Service Section -->
+
+  <footer class="footer-distributed">
+    <%- include('partials/footer'); %>
+  </footer>
+</body>
+
 </html>

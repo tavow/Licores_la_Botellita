@@ -113,7 +113,10 @@ const mainController = {
         res.render("cocteles", { receta: receta });
         // res.send('Listado de Recetas');
         //res.render("receta");
-      },
+    },
+    compras: (req, res) => {
+        res.render("compras");
+    },
 }
 
 module.exports = mainController;

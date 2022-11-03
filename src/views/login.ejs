@@ -14,60 +14,61 @@
   <!-- <main> -->
 
   <section class="bg-home pt-15">
-        <div class="container">
-            <div class="row">
-                <div class="col-8 mx-auto bg-light pt-2 ">
-                  <!--Aquí muestro los errores del lado del Js-Front -->
+    <div class="container">
+      <div class="row">
+        <div class="col-8 mx-auto bg-light pt-2 ">
+          <!--Aquí muestro los errores del lado del Js-Front -->
 
-                  
-                    <div class="signup-form">
 
-                        <form action="/user/login" method="post" class="formulario" id="contact">
-                          <h3>Login</h3>
-                          <h4>Introduzca su correo y contraseña</h4>
-                          <br>
-                          <div>
-                            <ul id="errores"> </ul>
-                          </div>
-                            <fieldset>
-                                <input type="email" name="correo" placeholder="Correo" value="" tabindex="2">
-                                <% if(typeof(errors) != 'undefined'){%>
-                                  <span class="text-danger">
-                                    <%= errors[0].msg %>
-                                  </span>
-                               <%}%>
-                            </fieldset>
-                            <fieldset>                                 
-                              <input type="password" tabindex="3" placeholder="password" name="password">
-                              <div>
-                                <span class="input-group-text" id="eye"><i class="fas fa-eye-slash"></i></span>
-                              </div>
-                            </fieldset>
-                            <% if(typeof(errors) != 'undefined' ){%>
-                              <span class="text-danger">
-                                <%= errors[0].msg %>
-                              </span>
-                           <%}%>
+          <div class="signup-form">
 
-                           <fieldset>
-                            <input type="checkbox" name="remember_user" id="remember_user" tabindex="6">
-                            <label for="remember_user">Recordarme </label>
-                          </fieldset>
+            <form action="/user/login" method="post" class="formulario" id="contact">
+              <h3>Login</h3>
+              <h4>Introduzca su correo y contraseña</h4>
+              <br>
+              <div>
+                <ul id="errores"> </ul>
+              </div>
+              <fieldset>
+                <input type="email" name="correo" placeholder="Correo" value="" tabindex="2">
+                <% if(typeof(errors) !='undefined' ){%>
+                  <span class="text-danger">
+                    <%= errors[0].msg %>
+                  </span>
+                  <%}%>
+              </fieldset>
+              <fieldset>
+                <input type="password" tabindex="3" placeholder="password" name="password">
+                <div>
+                  <span class="input-group-text" id="eye"><i class="fas fa-eye-slash"></i></span>
+                </div>
+              </fieldset>
+              <% if(typeof(errors) !='undefined' ){%>
+                <span class="text-danger">
+                  <%= errors[0].msg %>
+                </span>
+                <%}%>
 
-                          <input type="text" id="categoria" name="categoria" tabindex="5" value="false" hidden><br>
-                          <fieldset>
-                            <!-- <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button> -->
-                            <button type="submit" class="cart-btn">Submit</button><br>
-                          </fieldset>
-                        </form>
-                        <div class="text-center mb-3"><a href="register">¿No tiene una cuenta? Regístrese</a></div>
-                    </div>
-                </div>                        
-            </div>
+                  <fieldset>
+                    <input type="checkbox" name="remember_user" id="remember_user" tabindex="6">
+                    <label for="remember_user">Recordarme </label>
+                  </fieldset>
+
+                  <input type="text" id="categoria" name="categoria" tabindex="5" value="false" hidden><br>
+                  <fieldset>
+                    <!-- <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button> -->
+                    <button type="submit" class="cart-btn">Submit</button><br>
+                  </fieldset>
+            </form>
+            <div class="text-center mb-3"><a href="register">¿No tiene una cuenta? Regístrese</a></div>
+          </div>
         </div>
+      </div>
+    </div>
   </section>
-</div> 
-  <footer>
+  </div>
+
+  <footer class="footer-distributed">
     <%- include('./partials/footer') %>
   </footer>
 

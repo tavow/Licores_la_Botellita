@@ -2,7 +2,9 @@ window.addEventListener('load', function () {
     //Capturar el formulario 
     //let formulario = document.querySelector('.formulario');
     let formulario = document.getElementById('formulario');
+    var { nombre, precio, descuento, descripcion} = formulario.elements;
     console.log(formulario.elements.nombre.value);
+    
     formulario.addEventListener('submit', function (evento) {
         if (!validaciones(evento)) {
             evento.preventDefault();
@@ -12,11 +14,9 @@ window.addEventListener('load', function () {
 
         function validaciones(evento) {
             //Destructuring  
-            let { nombre, precio, descuento, descripcion} = formulario.elements;
+            // var { nombre, precio, descuento, descripcion} = formulario.elements;
+            // this.alert(formulario.elements.nombre.value);
             let errores = [];
-            console.log('Validaciones');
-            console.log(formulario.elements.nombre.value);
-            console.log(formulario.elements.precio.value);
             //Validar Nombre
             if (nombre.value == '') {
                 errores.push('El campo Nombre no puede estar vacio...');
@@ -29,7 +29,7 @@ window.addEventListener('load', function () {
 
             //Validar Precio
             if (precio.value == '') {
-                errores.push('El campo precio no puede estar vacio...');
+                errores.push('El campo Precio no puede estar vacio...');
                 precio.classList.add('is-invalid');
                 //errores['precio'] = 'El campo nombre no puede estar vacio...';
             } else {
@@ -39,7 +39,7 @@ window.addEventListener('load', function () {
 
             //Validar descuento
             if (descuento.value == '') {
-                errores.push('El campo descuento no puede estar vacio...');
+                errores.push('El campo Descuento no puede estar vacio...');
                 descuento.classList.add('is-invalid');
                 //errores['descuento'] = 'El campo nombre no puede estar vacio... ';
             } else {

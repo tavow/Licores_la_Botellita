@@ -1,0 +1,109 @@
+-- MySQL Workbench Forward Engineering
+
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
+
+-- -----------------------------------------------------
+-- Schema labotellita
+-- -----------------------------------------------------
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `labotellita` DEFAULT CHARACTER SET utf8 ;
+USE `labotellita` ;
+
+-- -----------------------------------------------------
+-- Table `labotellita`.`producto`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `labotellita`.`producto` (
+  `idproducto` INT NOT NULL AUTO_INCREMENT,
+  `nombre` VARCHAR(100) CHARACTER SET 'utf8' NULL DEFAULT NULL,
+  `descripcion` VARCHAR(400) CHARACTER SET 'utf8' NULL DEFAULT NULL,
+  `precio` DOUBLE NULL DEFAULT NULL,
+  `descuento` VARCHAR(100) CHARACTER SET 'utf8' NULL DEFAULT NULL,
+  `categoria` VARCHAR(100) CHARACTER SET 'utf8' NULL DEFAULT NULL,
+  `tamano` VARCHAR(100) CHARACTER SET 'utf8' NULL DEFAULT NULL,
+  `tipo` VARCHAR(100) CHARACTER SET 'utf8' NULL DEFAULT NULL,
+  `img` VARCHAR(100) CHARACTER SET 'utf8' NULL DEFAULT NULL,
+  `datatimeproducto` DATETIME NULL DEFAULT NULL,
+  PRIMARY KEY (`idproducto`),
+  INDEX `idproducto_idx` (`idproducto` ASC))
+ENGINE = InnoDB AUTO_INCREMENT=1
+DEFAULT CHARACTER SET = utf8mb3;
+
+-- -----------------------------------------------------
+-- Table `labotellita`.`usuario`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `labotellita`.`usuario` (
+  `idusuario` INT NOT NULL AUTO_INCREMENT,
+  `nombre` VARCHAR(100) CHARACTER SET 'utf8' NULL DEFAULT NULL,
+  `apellido` VARCHAR(100) CHARACTER SET 'utf8' NULL DEFAULT NULL,
+  `correo` VARCHAR(100) NULL,
+  `password` VARCHAR(100) NULL,
+  `telefono` BIGINT NULL,
+  `direccion` VARCHAR(255) CHARACTER SET 'utf8' NULL DEFAULT NULL,
+  `ciudad` VARCHAR(100) NULL,
+  `categoria` TINYINT,
+  `img` VARCHAR(100) CHARACTER SET 'utf8' NULL DEFAULT NULL,
+  `datatimeusuario` DATETIME NULL DEFAULT NULL,
+  PRIMARY KEY (`idusuario`),
+  INDEX `idusuario_idx` (`idusuario` ASC))
+ENGINE = InnoDB AUTO_INCREMENT=1
+DEFAULT CHARACTER SET = utf8mb3;
+
+-- -----------------------------------------------------
+-- Table `labotellita`.`venta`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `labotellita`.`venta` (
+  `idventa` INT NOT NULL,
+  `precio` DOUBLE NULL DEFAULT NULL,
+  `descuento` INT NULL DEFAULT NULL,
+  `precioventa` DOUBLE NULL DEFAULT NULL,
+  `idusuario` INT NULL DEFAULT NULL,
+  `datatimeventa` DATETIME NULL DEFAULT NULL,
+  PRIMARY KEY (`idventa`))
+ENGINE = InnoDB AUTO_INCREMENT=1
+DEFAULT CHARACTER SET = utf8mb3;
+
+ALTER TABLE `labotellita`.`venta`  ADD INDEX `venta_usuario_idusuario_idx` (`idusuario` ASC); 
+ 
+ALTER TABLE `labotellita`.`venta`  
+ADD CONSTRAINT `fk_venta_usuario_idusuario`
+FOREIGN KEY (`idusuario`)
+REFERENCES `labotellita`.`usuario` (`idusuario`)
+ON DELETE CASCADE
+ON UPDATE CASCADE;
+
+-- -----------------------------------------------------
+-- Table `labotellita`.`ventaproducto`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `labotellita`.`ventaproducto` (
+  `idventaproducto` INT NOT NULL,
+  `idproducto` INT NOT NULL,
+  `idventa` INT NOT NULL,
+  PRIMARY KEY (`idventaproducto`),
+  INDEX `ventaproducto_venta_idventa_idx` (`idventa` ASC),
+  INDEX `ventaproducto_producto_idproducto_idx` (`idproducto` ASC))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb3;
+
+ALTER TABLE `labotellita`.`ventaproducto`  
+ADD CONSTRAINT `fk_ventaproducto_producto`
+FOREIGN KEY (`idproducto`)
+REFERENCES `labotellita`.`producto` (`idproducto`)
+ON DELETE CASCADE
+ON UPDATE CASCADE;
+
+ALTER TABLE `labotellita`.`ventaproducto`  
+ADD CONSTRAINT`fk_ventaproducto_venta_idventa`
+FOREIGN KEY (`idventa`)
+REFERENCES `labotellita`.`venta` (`idventa`)
+ON DELETE CASCADE
+ON UPDATE CASCADE;
+
+ALTER TABLE labotellita.producto Modify column descripcion text;  
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+
