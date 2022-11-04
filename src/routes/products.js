@@ -3,9 +3,6 @@ const router = express.Router();
 const productsController = require("../controllers/productsController.js")
 const upload = require('../middlewares/multer');
 
-// router.get('/list/:category?', productsController.list);
-// router.get('/detail/:id', productsController.detail);
-
 // La Botellita
 router.get('/', productsController.leer);
 router.get('/listar', productsController.listar);

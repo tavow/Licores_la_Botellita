@@ -49,7 +49,7 @@ window.addEventListener('load', function () {
 
             //Validar descripcion
             if (descripcion.value == '') {
-                errores.push('El campo descripcion no puede estar vacio...');
+                errores.push('El campo Descripcion no puede estar vacio...');
                 descripcion.classList.add('is-invalid');
                 //errores['telefono'] = 'El campo nombre no puede estar vacio... ';
             } else {

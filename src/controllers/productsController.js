@@ -51,8 +51,6 @@ const controladorProductos = {
         console.log("Nos vamos a editar el producto")
         res.render("product-edit-form", { productToEdit: producto })
       })
-
-    // res.render('product-edit-form', { productToEdit })
   },
   vino: (req, res) => {
     var producto = Productos.findAll({
@@ -69,26 +67,7 @@ const controladorProductos = {
 
   },
   ron: (req, res) => {
-    // let producto = listaProductos.find(producto => producto.categoria == "ron");
-    // let categoria = 'ron';
-    // let producto = [];
-    // for (let i = 0; i < products.length; i++) {
-    //   if (products[i].categoria == categoria) {
-    //     producto = producto.concat(products[i]);
-    //   }
-    // }
-    // console.log(producto);
-    // res.render("productos2", { producto: producto });
-    // res.send('Listado de ron');
-
     var producto = Productos.findAll({
-      // include: {
-      //   model: Imagen,
-      //   as: 'imagen'
-      // where: {
-      //   idimagen: Sequelize.col('producto.idimagen')
-      //   // }
-      // },
       where: {
         categoria: {
           [Op.eq]: 'ron'
@@ -151,7 +130,6 @@ const controladorProductos = {
         res.render("detalleproduct.ejs", { producto: producto })
 
       })
-
   },
   // Delete - Delete one product from DB
   destroy: (req, res) => {
@@ -172,7 +150,7 @@ const controladorProductos = {
     if (req.files[0] != undefined) {
       img = req.files[0].filename
     } else {
-      img = 'default-image.png'
+      img = 'default.png'
     }
     console.log(img);
 
@@ -187,7 +165,7 @@ const controladorProductos = {
     let datatimeproducto = "1999-06-06";
     if (req.files) {
       console.log("Create");
-      Productos.create({
+      let prod = {
         nombre: req.body.nombre,
         descripcion: req.body.descripcion,
         precio: req.body.precio,
@@ -195,12 +173,21 @@ const controladorProductos = {
         categoria: req.body.categoria,
         tamano: req.body.tamano,
         tipo: req.body.tipo,
-        img: img,
+        img: req.files && req.files[0] ? req.files[0].filename : 'default.png',
         datatimeproducto: datatimeproducto
-      }).then((product) => res.redirect('/products'))
-      res.render('index')
-    } else {
-      res.render('index')
+      };
+
+      Productos.create(prod)
+      .then((storedProd) => { res.render('product-response') })
+      .catch(error => res.render(path.join(__dirname, '../views/products.ejs'), {
+        errors: errors.mapped(),
+        old: req.body
+      }));
+
+    //   Productos.create(prod).then((product) => res.redirect('/'))
+    //   res.render('index')
+    // } else {
+    //   res.render('index')
     }
 
   },
@@ -233,7 +220,8 @@ const controladorProductos = {
             categoria: req.body.categoria,
             tamano: req.body.tamano,
             tipo: req.body.tipo,
-            img: req.body.img,
+            img: req.files && req.files[0] ? req.files[0].filename : req.body.img,
+            // img: req.file ? req.body.img :  'default.png',
             datatimeproducto: req.body.datatimeproducto
           },
             {

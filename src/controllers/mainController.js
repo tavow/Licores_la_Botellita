@@ -63,7 +63,7 @@ const listaRecetas = [
             "25 ml de zumo de lima",
             "1/2 cucharadita de postre de azúcar glas o jarabe de azúcar",
             "5 Cubos de Hielo",
-            "1 limón en rodajas",
+            "1 rodaja de limón",
         ],
         instrucciones: [
             "Exprime la lima para extraer su zumo y verter en la coctelera",
@@ -75,6 +75,60 @@ const listaRecetas = [
         html: "daiquiri.html",
         img: "daiquiri.jpg",
     },
+    {
+        id: 5,
+        titulo: "Whisky sour",
+        descripcion: "Esta bebida alcohólica pertenece a la familia de cócteles llamados sours",
+        ingredientes: [
+            "30 mililitros de whisky (usa cualquier tipo)",
+            "30 mililitros de zumo de limón",
+            "1 cda sopera de azúcar",
+            "5 Cubos de Hielo",
+            "1 rodaja de limón",
+        ],
+        instrucciones: [
+            "Vierte en una coctelera el whisky, el zumo de limón y el azúcar (en ese orden). Bate enérgicamente durante unos segundos hasta que se disuelva el azúcar y los líquidos se enfríen.",
+            "Pasa el contenido de la coctelera a un vaso corto que contenga dos cubos de hielo. Decora con una guinda o cereza.",
+        ],
+        html: "whisky_sour.html",
+        img: "whisky_sour.jpg",
+    },
+    {
+        id: 6,
+        titulo: "Blow job shot",
+        descripcion: "Se dice que el nombre del cóctel está inspirado en la apariencia de los ingredientes y en la forma en que se toma",
+        ingredientes: [
+            "15 mililitros de Amaretto",
+            "15 mililitros de Bayleys",
+            "15 mililitros de Kalua",
+        ],
+        instrucciones: [
+            "Vierte en un shot largo el Amaretto, el Kalua (despacio) y el Baileys. Respeta el orden y sirve muy despacio. Si quieres suavizarle el sabor reemplaza el amaretto o el baleys por nata montada",
+        ],
+        html: "blow_job_shot.html",
+        img: "blow_job_shot.png",
+    },
+    {
+        id: 7,
+        titulo: "Jalapeño Margarita",
+        descripcion: "Es la reinvención de un clásico como la Margarita",
+        ingredientes: [
+            "2 onzas de Patrón Silver",
+            ".5 onzas de Patrón Citrónge Orange",
+            ".5 onzas de jarabe de agave",
+            "1 onza de jugo de lima fresco",
+            "3 rodajitas de jalapeño",
+            "1 gajo de lima para decorar",
+        ],
+        instrucciones: [
+            "En el fondo de una coctelera, se machaca una rodajita de jalapeño con jarabe de agave",
+            "Se agregan los tequilas y el jugo de lima y se agita con hielo para enfriar",
+            "Se sirve colado sobre hielo en un vaso bajo",
+            "Se decora con un gajo de lima y el resto de las rodajitas de jalapeño",
+        ],
+        html: "jalapeno_margarita.html",
+        img: "jalapeno_margarita.png",
+    },
 ];
 
 
@@ -84,20 +138,8 @@ const path = require("path");
 const mainController = {
     index: (req, res) => {
         return res.render('index')
-        // },
-        // about: (req, res) => {
-        //     return res.render('main/about')
-        // },
-        // contact: (req, res) => {
-        //     return res.render('main/contact')
-        // },
-        // questions: (req,res) => {
-        //     return res.render ('main/questions')
     },
     receta: (req, res) => {
-        // let plato = listaRecetas.find(plato => plato.id == req.params.menuId);
-        // res.render("receta", { receta: receta });
-        // res.send('Listado de Recetas pruebas');
         res.render("receta", { listaRecetas });
     },
     servicio: (req, res) => {
@@ -111,8 +153,6 @@ const mainController = {
         console.log(receta);
         //res.render(rederizar);
         res.render("cocteles", { receta: receta });
-        // res.send('Listado de Recetas');
-        //res.render("receta");
     },
     compras: (req, res) => {
         res.render("compras");
